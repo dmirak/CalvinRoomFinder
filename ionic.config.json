@@ -1,0 +1,7 @@
+{
+  "name": "CalvinRoomFinder",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
