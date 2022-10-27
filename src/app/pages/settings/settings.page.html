@@ -9,7 +9,9 @@
   <ion-list>
     <ion-item id="dark-mode">
       <ion-label>Dark mode</ion-label>
-      <ion-toggle name="dark-mode-toggle" [enableOnOffLabels]="true"></ion-toggle>
+      <ion-toggle name="dark-mode-toggle" [(ngModel)]="darkMode" [enableOnOffLabels]="true"
+        (ionChange)="darkModeChanged()">
+      </ion-toggle>
     </ion-item>
     <ion-item id="units">
       <ion-segment value="units">
@@ -24,11 +26,15 @@
     </ion-item>
     <ion-item id="map-rotation">
       <ion-label>Rotate map</ion-label>
-      <ion-toggle name="map-rotation-toggle" [enableOnOffLabels]="true" [checked]="true"></ion-toggle>
+      <ion-toggle name="map-rotation-toggle" [(ngModel)]="rotateMap" [enableOnOffLabels]="true" [checked]="true"
+        (ionChange)="rotateMapChanged()">
+      </ion-toggle>
     </ion-item>
     <ion-item id="accessibility-mode">
       <ion-label>Accessibility mode</ion-label>
-      <ion-toggle name="accessibility-mode-toggle" [enableOnOffLabels]="true"></ion-toggle>
+      <ion-toggle name="accessibility-mode-toggle" [(ngModel)]="accessibilityMode" [enableOnOffLabels]="true"
+        (ionChange)="accessibilityModeChanged()">
+      </ion-toggle>
     </ion-item>
     <ion-item id="icon-select">
       <ion-select placeholder="Select icon">
