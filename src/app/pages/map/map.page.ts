@@ -2,7 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { GoogleMap } from '@capacitor/google-maps';
 import { environment } from 'src/environments/environment';
 
-declare var google: any;
+declare const google: any;
 
 @Component({
   selector: 'app-tab1',
@@ -10,14 +10,29 @@ declare var google: any;
   styleUrls: ['map.page.scss'],
 })
 export class MapPage {
+  @ViewChild('map', { read: ElementRef, static: false }) mapRef: ElementRef;
   map: any;
 
-  @ViewChild('map', { read: ElementRef, static: false }) mapRef: ElementRef;
-
-  constructor() {}
+  constructor() { }
 
   ionViewDidEnter() {
     this.showMap();
+
+    const marker1 = new google.maps.Marker({
+      position: {
+        lat: 42.931033,
+        lng: -85.588502,
+      },
+      map: this.map,
+    });
+
+    const marker2 = new google.maps.Marker({
+      position: {
+        lat: 42.931489,
+        lng: -85.586713,
+      },
+      map: this.map,
+    });
   }
 
   showMap() {
