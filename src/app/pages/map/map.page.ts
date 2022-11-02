@@ -11,6 +11,9 @@ declare var google: any;
 })
 export class MapPage {
   map: any;
+  userIcon = '../../../assets/user-icon.png';
+  userMarker: any;
+  userLocation = { lat: 0, lng: 0 };
 
   @ViewChild('map', { read: ElementRef, static: false }) mapRef: ElementRef;
 
@@ -20,13 +23,94 @@ export class MapPage {
     this.showMap();
   }
 
-  showMap() {
-    const location = new google.maps.LatLng(42.93165, -85.58748);
+  async showMap() {
+    await navigator.geolocation.getCurrentPosition(
+      (position: GeolocationPosition) => {
+        const pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+        this.userLocation = pos;
+      }
+    );
+    const location = await new google.maps.LatLng(
+      this.userLocation.lat,
+      this.userLocation.lng
+    );
     const options = {
       center: location,
-      zoom: 17,
+      zoom: 18,
       disableDefaultUI: true,
     };
-    this.map = new google.maps.Map(this.mapRef.nativeElement, options);
+    this.map = await new google.maps.Map(this.mapRef.nativeElement, options);
+    await this.setLocationCenter();
+
+    navigator.geolocation.watchPosition((position) => {
+      const previousCoords = this.userLocation;
+      this.userLocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      };
+      const userDirection = this.getCurrentDirection(
+        previousCoords,
+        this.userLocation
+      );
+      if (!this.userMarker) {
+        this.userMarker = new google.maps.Marker({
+          icon: {
+            fillColor: 'blue',
+            fillOpacity: 1,
+            path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+            rotation: userDirection,
+            scale: 7,
+            strokeColor: 'white',
+            strokeWeight: 2,
+          },
+          position: this.userLocation,
+        });
+      } else {
+        this.userMarker.setMap(null);
+        this.userMarker = new google.maps.Marker({
+          icon: {
+            fillColor: 'blue',
+            fillOpacity: 1,
+            path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+            rotation: userDirection,
+            scale: 7,
+            strokeColor: 'white',
+            strokeWeight: 2,
+          },
+          position: this.userLocation,
+        });
+      }
+
+      this.userMarker.setMap(this.map);
+    });
+    //this.addUserMarker();
+  }
+
+  setLocationCenter() {
+    navigator.geolocation.getCurrentPosition(
+      (position: GeolocationPosition) => {
+        const pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+        this.map.setCenter(pos);
+      }
+    );
+  }
+
+  getCurrentDirection(previousCoords, currentCoords) {
+    const diffLat = currentCoords.lat - previousCoords.lat;
+    const diffLng = currentCoords.lng - previousCoords.lng;
+    const anticlockwiseAngleFromEast = this.convertToDegrees(
+      Math.atan2(diffLat, diffLng)
+    );
+    const clockwiseAngleFromNorth = 90 - anticlockwiseAngleFromEast;
+    return clockwiseAngleFromNorth;
+  }
+  convertToDegrees(radian) {
+    return (radian * 180) / Math.PI;
   }
 }
