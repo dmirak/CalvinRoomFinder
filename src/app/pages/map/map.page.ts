@@ -13,7 +13,7 @@ export class MapPage {
   @ViewChild('map', { read: ElementRef, static: false }) mapRef: ElementRef;
   map: any;
 
-  constructor() { }
+  constructor() {}
 
   ionViewDidEnter() {
     this.showMap();
@@ -24,6 +24,7 @@ export class MapPage {
         lng: -85.588502,
       },
       map: this.map,
+      title: 'my marker1',
     });
 
     const marker2 = new google.maps.Marker({
@@ -32,10 +33,34 @@ export class MapPage {
         lng: -85.586713,
       },
       map: this.map,
+      title: 'my marker2',
     });
+    const directionsService = new google.maps.DirectionsService();
+    const directionsRenderer = new google.maps.DirectionsRenderer();
+    directionsRenderer.setMap(this.map);
+    calcRoute2(directionsService, directionsRenderer);
+
+    function calcRoute2(directionsService, directionsRenderer) {
+      directionsService
+        .route({
+          origin: { guery: marker1.getPosition() },
+
+          destination: { query: marker2.getPosition() },
+
+          travelMode: google.maps.TravelMode.WALKING,
+        })
+        .then((response) => {
+          directionsRenderer.setDirections(response);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    }
   }
 
   showMap() {
+    const directionsService = new google.maps.DirectionsService();
+    const directionsRenderer = new google.maps.DirectionsRenderer();
     const location = new google.maps.LatLng(42.93165, -85.58748);
     const options = {
       center: location,
@@ -43,5 +68,34 @@ export class MapPage {
       disableDefaultUI: true,
     };
     this.map = new google.maps.Map(this.mapRef.nativeElement, options);
+
+    directionsRenderer.setMap(this.map);
+
+    this.calcRoute(directionsService, directionsRenderer);
+  }
+
+  calcRoute(directionsService, directionsRenderer) {
+    navigator.geolocation.getCurrentPosition(
+      (position: GeolocationPosition) => {
+        const pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+        directionsService
+          .route({
+            origin: { lat: pos.lat, lng: pos.lng },
+
+            destination: { query: 'Calvin Campus Store Book store' },
+
+            travelMode: google.maps.TravelMode.WALKING,
+          })
+          .then((response) => {
+            directionsRenderer.setDirections(response);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      }
+    );
   }
 }
