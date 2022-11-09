@@ -35,27 +35,6 @@ export class MapPage {
       map: this.map,
       title: 'my marker2',
     });
-    const directionsService = new google.maps.DirectionsService();
-    const directionsRenderer = new google.maps.DirectionsRenderer();
-    directionsRenderer.setMap(this.map);
-    calcRoute2(directionsService, directionsRenderer);
-
-    function calcRoute2(directionsService, directionsRenderer) {
-      directionsService
-        .route({
-          origin: { guery: marker1.getPosition() },
-
-          destination: { query: marker2.getPosition() },
-
-          travelMode: google.maps.TravelMode.WALKING,
-        })
-        .then((response) => {
-          directionsRenderer.setDirections(response);
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-    }
   }
 
   showMap() {
