@@ -4,6 +4,12 @@ import { environment } from 'src/environments/environment';
 
 declare var google: any;
 
+export interface RoomInfo {
+  name: string;
+  lat: number;
+  lng: number;
+}
+
 @Component({
   selector: 'app-tab1',
   templateUrl: 'map.page.html',
@@ -12,8 +18,27 @@ declare var google: any;
 export class MapPage {
   map: any;
   isItemAvailable = false;
-  items = [];
-  roomid = [];
+  markerCreated: boolean = false;
+
+  public roomList: RoomInfo[] = [
+    {
+      name: 'sb301',
+      lat: 42.93119,
+      lng: -85.58926,
+    },
+    {
+      name: 'sb201',
+      lat: 42.93,
+      lng: -85.58,
+    },
+    {
+      name: 'hh334',
+      lat: 42.91395,
+      lng: -85.57342,
+    },
+  ];
+
+  public selectedRoom: RoomInfo;
 
   @ViewChild('map', { read: ElementRef, static: false }) mapRef: ElementRef;
 
@@ -33,46 +58,60 @@ export class MapPage {
     this.map = new google.maps.Map(this.mapRef.nativeElement, options);
   }
 
-  initializeItems() {
-    this.items = [
-      { room: 'sb301', lat: 42.93119, lng: -85.58926 },
-      { room: 'sb336', lat: 42, lng: -85 },
-      { room: 'nh121', lat: 42.6, lng: -85.3 },
-    ];
-    this.roomid = this.items.map(({ room }) => room);
-  }
-
   getItems(ev: any) {
-    // Reset items back to all of the items
-    this.initializeItems();
     // set val to the value of the searchbar
     const val = ev.target.value;
 
     if (val && val.trim() !== '') {
       this.isItemAvailable = true;
       // eslint-disable-next-line arrow-body-style
-      this.roomid = this.roomid.filter((item) => {
-        return item.toLowerCase().indexOf(val.toLowerCase()) > -1;
-      });
+      // this.roomList.forEach((item) => {
+      //   console.log(item.name.toUpperCase());
+      //   return item.name.toUpperCase();
+      // });
     } else {
       this.isItemAvailable = false;
     }
   }
 
-  createMarker() {
-    const classroom = document.getElementById('location').textContent.trim();
-    console.log(classroom);
+  createMarker(room: RoomInfo): void {
+    this.selectedRoom = room;
+    const directionsService = new google.maps.DirectionsService();
+    const directionsRenderer = new google.maps.DirectionsRenderer();
 
-    this.items.forEach((place) => {
-      if (place.room == classroom) {
-        const marker = new google.maps.Marker({
-          position: { lat: place.lat, lng: place.lng },
-        });
-        marker.setMap(this.map);
-        console.log('success');
-      } else {
-        console.log('failed');
+    this.calcRoute(directionsService, directionsRenderer);
+
+    directionsRenderer.setMap(this.map);
+
+    console.log('Created marker for: ' + this.selectedRoom.name);
+    this.isItemAvailable = false;
+  }
+
+  calcRoute(directionsService, directionsRenderer) {
+    navigator.geolocation.getCurrentPosition(
+      (position: GeolocationPosition) => {
+        const pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+        directionsService
+          .route({
+            origin: { lat: pos.lat, lng: pos.lng },
+
+            destination: {
+              lat: this.selectedRoom.lat,
+              lng: this.selectedRoom.lng,
+            },
+
+            travelMode: google.maps.TravelMode.WALKING,
+          })
+          .then((response) => {
+            directionsRenderer.setDirections(response);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
       }
-    });
+    );
   }
 }
