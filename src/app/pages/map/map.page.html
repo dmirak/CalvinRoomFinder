@@ -9,10 +9,16 @@
 
 <ion-content [fullscreen]="true">
   <div>
-    <ion-searchbar type="text" animated="true" placeholder="Enter the room number" (ionChange)="getItems($event)">
+    <ion-searchbar
+      type="text"
+      placeholder="Enter the room number"
+      (ionChange)="getItems($event)"
+    >
     </ion-searchbar>
     <ion-list *ngIf="isItemAvailable">
-      <ion-item *ngFor="let item of items">{{ item }}</ion-item>
+      <ion-buttons id="location" *ngFor="let room of roomList">
+        <ion-button (click)="createMarker(room)"> {{ room.name }} </ion-button>
+      </ion-buttons>
     </ion-list>
   </div>
   <div #map id="map">

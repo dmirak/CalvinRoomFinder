@@ -1,16 +1,19 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { DeviceOrientation, DeviceOrientationCompassHeading } from '@awesome-cordova-plugins/device-orientation/ngx';
+//import { DeviceOrientation, DeviceOrientationCompassHeading } from '@awesome-cordova-plugins/device-orientation/ngx';
 
 declare const google: any;
+
+export interface RoomInfo {
+  name: string;
+  lat: number;
+  lng: number;
+}
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'map.page.html',
   styleUrls: ['map.page.scss'],
 })
-
-
-
 export class MapPage {
   @ViewChild('map', { read: ElementRef, static: false }) mapRef: ElementRef;
 
@@ -19,9 +22,27 @@ export class MapPage {
   userMarker: any;
   userLocation = { lat: 0, lng: 0 };
   isItemAvailable = false;
-  items = [];
+  markerCreated: boolean = false;
 
-  constructor() { }
+  public roomList: RoomInfo[] = [
+    {
+      name: 'sb301',
+      lat: 42.93119,
+      lng: -85.58926,
+    },
+    {
+      name: 'sb201',
+      lat: 42.93,
+      lng: -85.58,
+    },
+    {
+      name: 'hh334',
+      lat: 42.91395,
+      lng: -85.57342,
+    },
+  ];
+
+  public selectedRoom: RoomInfo;
   // constructor(private deviceOrientation: DeviceOrientation) { }
 
   ionViewDidEnter() {
@@ -124,29 +145,52 @@ export class MapPage {
     return (radian * 180) / Math.PI;
   }
 
-  initializeItems() {
-    this.items = ['SB104', 'SB302', 'HH108', 'NH101', 'Gamma 5'];
-  }
-
   getItems(ev: any) {
-    // Reset items back to all of the items
-    this.initializeItems();
-
     // set val to the value of the searchbar
     const val = ev.target.value;
 
-    // if the value is an empty string don't filter the items
     if (val && val.trim() !== '') {
       this.isItemAvailable = true;
       // eslint-disable-next-line arrow-body-style
-      this.items = this.items.filter((item) => {
-        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      });
+      // this.roomList.forEach((item) => {
+      //   console.log(item.name.toUpperCase());
+      //   return item.name.toUpperCase();
+      // });
     } else {
       this.isItemAvailable = false;
     }
   }
 
+  createMarker(room: RoomInfo): void {
+    this.selectedRoom = room;
+    const directionsService = new google.maps.DirectionsService();
+    const directionsRenderer = new google.maps.DirectionsRenderer();
 
+    this.calcRoute(directionsService, directionsRenderer);
+
+    directionsRenderer.setMap(this.map);
+
+    console.log('Created marker for: ' + this.selectedRoom.name);
+    this.isItemAvailable = false;
+  }
+
+  calcRoute(directionsService, directionsRenderer) {
+    directionsService
+      .route({
+        origin: { lat: this.userLocation.lat, lng: this.userLocation.lng },
+
+        destination: {
+          lat: this.selectedRoom.lat,
+          lng: this.selectedRoom.lng,
+        },
+
+        travelMode: google.maps.TravelMode.WALKING,
+      })
+      .then((response) => {
+        directionsRenderer.setDirections(response);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
 }
-
