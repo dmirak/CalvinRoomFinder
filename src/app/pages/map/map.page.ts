@@ -8,6 +8,9 @@ declare const google: any;
   templateUrl: 'map.page.html',
   styleUrls: ['map.page.scss'],
 })
+
+
+
 export class MapPage {
   @ViewChild('map', { read: ElementRef, static: false }) mapRef: ElementRef;
 
@@ -15,7 +18,8 @@ export class MapPage {
   userIcon = '../../../assets/user-icon.png';
   userMarker: any;
   userLocation = { lat: 0, lng: 0 };
-
+  isItemAvailable = false;
+  items = [];
 
   constructor() { }
   // constructor(private deviceOrientation: DeviceOrientation) { }
@@ -119,4 +123,30 @@ export class MapPage {
   convertToDegrees(radian) {
     return (radian * 180) / Math.PI;
   }
+
+  initializeItems() {
+    this.items = ['SB104', 'SB302', 'HH108', 'NH101', 'Gamma 5'];
+  }
+
+  getItems(ev: any) {
+    // Reset items back to all of the items
+    this.initializeItems();
+
+    // set val to the value of the searchbar
+    const val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() !== '') {
+      this.isItemAvailable = true;
+      // eslint-disable-next-line arrow-body-style
+      this.items = this.items.filter((item) => {
+        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      });
+    } else {
+      this.isItemAvailable = false;
+    }
+  }
+
+
 }
+

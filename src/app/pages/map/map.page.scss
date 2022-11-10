@@ -9,3 +9,18 @@ ion-img {
   width: 5%;
   height: 5%;
 }
+
+#sbox {
+  justify-content: center;
+}
+
+.my-search-box {
+  align-self: center;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #212529;
+
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+}

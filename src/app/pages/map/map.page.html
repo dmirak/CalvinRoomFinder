@@ -7,6 +7,15 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div #map id="map"></div>
+<ion-content [fullscreen]="true">
+  <div>
+    <ion-searchbar type="text" animated="true" placeholder="Enter the room number" (ionChange)="getItems($event)">
+    </ion-searchbar>
+    <ion-list *ngIf="isItemAvailable">
+      <ion-item *ngFor="let item of items">{{ item }}</ion-item>
+    </ion-list>
+  </div>
+  <div #map id="map">
+    <google-map [center]="center"></google-map>
+  </div>
 </ion-content>
