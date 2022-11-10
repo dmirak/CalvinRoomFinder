@@ -1,8 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { GoogleMap } from '@capacitor/google-maps';
-import { environment } from 'src/environments/environment';
+import { DeviceOrientation, DeviceOrientationCompassHeading } from '@awesome-cordova-plugins/device-orientation/ngx';
 
-declare var google: any;
+declare const google: any;
 
 @Component({
   selector: 'app-tab1',
@@ -10,14 +9,16 @@ declare var google: any;
   styleUrls: ['map.page.scss'],
 })
 export class MapPage {
+  @ViewChild('map', { read: ElementRef, static: false }) mapRef: ElementRef;
+
   map: any;
   userIcon = '../../../assets/user-icon.png';
   userMarker: any;
   userLocation = { lat: 0, lng: 0 };
 
-  @ViewChild('map', { read: ElementRef, static: false }) mapRef: ElementRef;
 
-  constructor() {}
+  constructor() { }
+  // constructor(private deviceOrientation: DeviceOrientation) { }
 
   ionViewDidEnter() {
     this.showMap();
@@ -87,6 +88,11 @@ export class MapPage {
       this.userMarker.setMap(this.map);
     });
     //this.addUserMarker();
+
+    // this.deviceOrientation.getCurrentHeading().then(
+    //   (data: DeviceOrientationCompassHeading) => console.log(data),
+    //   (error: any) => console.log(error)
+    // );
   }
 
   setLocationCenter() {
