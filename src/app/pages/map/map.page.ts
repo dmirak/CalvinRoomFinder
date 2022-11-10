@@ -175,30 +175,22 @@ export class MapPage {
   }
 
   calcRoute(directionsService, directionsRenderer) {
-    navigator.geolocation.getCurrentPosition(
-      (position: GeolocationPosition) => {
-        const pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        };
-        directionsService
-          .route({
-            origin: { lat: pos.lat, lng: pos.lng },
+    directionsService
+      .route({
+        origin: { lat: this.userLocation.lat, lng: this.userLocation.lng },
 
-            destination: {
-              lat: this.selectedRoom.lat,
-              lng: this.selectedRoom.lng,
-            },
+        destination: {
+          lat: this.selectedRoom.lat,
+          lng: this.selectedRoom.lng,
+        },
 
-            travelMode: google.maps.TravelMode.WALKING,
-          })
-          .then((response) => {
-            directionsRenderer.setDirections(response);
-          })
-          .catch((e) => {
-            console.log(e);
-          });
-      }
-    );
+        travelMode: google.maps.TravelMode.WALKING,
+      })
+      .then((response) => {
+        directionsRenderer.setDirections(response);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   }
 }
