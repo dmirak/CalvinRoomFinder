@@ -20,9 +20,10 @@ export class MapPage {
   userLocation = { lat: 0, lng: 0 };
   isItemAvailable = false;
   items = [];
+  orientation: any;
 
-  constructor() { }
-  // constructor(private deviceOrientation: DeviceOrientation) { }
+  // constructor() { }
+  constructor(private deviceOrientation: DeviceOrientation) { }
 
   ionViewDidEnter() {
     this.showMap();
@@ -94,9 +95,17 @@ export class MapPage {
     //this.addUserMarker();
 
     // this.deviceOrientation.getCurrentHeading().then(
-    //   (data: DeviceOrientationCompassHeading) => console.log(data),
-    //   (error: any) => console.log(error)
+    //   (data: DeviceOrientationCompassHeading) => this.orientation = data,
+    //   (error: any) => this.orientation = error
     // );
+
+    // const subscription = this.deviceOrientation.watchHeading().subscribe(
+    //   (data: DeviceOrientationCompassHeading) => this.orientation = data
+    // );
+
+    this.deviceOrientation.watchHeading().subscribe((res: DeviceOrientationCompassHeading) => {
+      this.orientation = res;
+    });
   }
 
   setLocationCenter() {

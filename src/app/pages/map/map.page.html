@@ -1,6 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>Map</ion-title>
+    <ion-card>{{ orientation | json }}</ion-card>
     <ion-button slot="end" (click)="setLocationCenter()">
       current Location
     </ion-button>
@@ -16,6 +17,6 @@
     </ion-list>
   </div>
   <div #map id="map">
-    <google-map [center]="center"></google-map>
+    <google-map></google-map>
   </div>
 </ion-content>

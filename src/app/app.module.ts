@@ -10,6 +10,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
 import { IonicStorageModule } from '@ionic/storage-angular';
+import { DeviceOrientation } from '@awesome-cordova-plugins/device-orientation/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +21,8 @@ import { IonicStorageModule } from '@ionic/storage-angular';
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     })],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    DeviceOrientation],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
