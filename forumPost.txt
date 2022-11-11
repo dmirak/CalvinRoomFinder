@@ -1,0 +1,45 @@
+I am attempting to use Ionic's Device Orientation plugin with Capacitor to get the heading of my phone and display it in a PWA.
+
+Here is the code to get current heading:
+    this.deviceOrientation.watchHeading().subscribe((res:              DeviceOrientationCompassHeading) => {
+      this.orientation = res;
+    },
+      (error: any) => {
+        this.orientation = error;
+      });
+
+When running in the browser and on my phone, I always get back a "cordova_not_available" error.
+
+Is Cordova incompatable with PWAs?
+
+Here are the versions of the two required packages that I have installed:
+cordova-plugin-device-orientation@2.0.1
+@awesome-cordova-plugins/device-orientation@6.2.0
+
+Here is the output from ionic info:
+Ionic:
+
+   Ionic CLI                     : 6.20.1 (C:...\AppData\Roaming\npm\node_modules\@ionic\cli)
+   Ionic Framework               : @ionic/angular 6.3.4
+   @angular-devkit/build-angular : 14.2.8
+   @angular-devkit/schematics    : 13.3.9
+   @angular/cli                  : 14.2.8
+   @ionic/angular-toolkit        : 6.1.0
+
+Capacitor:
+
+   Capacitor CLI      : 4.3.0
+   @capacitor/android : 4.3.0
+   @capacitor/core    : 4.3.0
+   @capacitor/ios     : 4.3.0
+
+Utility:
+
+   cordova-res : not installed globally
+   native-run  : 1.7.1
+
+System:
+
+   NodeJS : v16.14.0 (C:\Program Files\nodejs\node.exe)
+   npm    : 8.17.0
+   OS     : Windows 10

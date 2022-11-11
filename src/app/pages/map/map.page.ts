@@ -105,7 +105,10 @@ export class MapPage {
 
     this.deviceOrientation.watchHeading().subscribe((res: DeviceOrientationCompassHeading) => {
       this.orientation = res;
-    });
+    },
+      (error: any) => {
+        this.orientation = error;
+      });
   }
 
   setLocationCenter() {
