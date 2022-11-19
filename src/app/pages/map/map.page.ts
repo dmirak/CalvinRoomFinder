@@ -22,7 +22,7 @@ export class MapPage {
   userMarker: any;
   userLocation = { lat: 0, lng: 0 };
   isItemAvailable = false;
-  markerCreated: boolean = false;
+  markerCreated = false;
 
   public roomList: RoomInfo[] = [
     {
