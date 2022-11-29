@@ -23,6 +23,9 @@ export class MapPage {
   userLocation = { lat: 0, lng: 0 };
   isItemAvailable = false;
   markerCreated = false;
+  heading: number | undefined;
+  userDirection = 0;
+  errorMsg: string;
 
   public roomList: RoomInfo[] = [
     {
@@ -77,17 +80,22 @@ export class MapPage {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
       };
-      const userDirection = this.getCurrentDirection(
-        previousCoords,
-        this.userLocation
-      );
+
+      // This will set userDirection based on change in coordinates
+      // this.userDirection = this.getCurrentDirection(
+      //   previousCoords,
+      //   this.userLocation
+      // );
+
+      this.userDirection = this.heading ?? this.userDirection;
+
       if (!this.userMarker) {
         this.userMarker = new google.maps.Marker({
           icon: {
             fillColor: 'blue',
             fillOpacity: 1,
             path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-            rotation: userDirection,
+            rotation: this.userDirection,
             scale: 7,
             strokeColor: 'white',
             strokeWeight: 2,
@@ -101,7 +109,7 @@ export class MapPage {
             fillColor: 'blue',
             fillOpacity: 1,
             path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-            rotation: userDirection,
+            rotation: this.userDirection,
             scale: 7,
             strokeColor: 'white',
             strokeWeight: 2,
@@ -118,6 +126,17 @@ export class MapPage {
     //   (data: DeviceOrientationCompassHeading) => console.log(data),
     //   (error: any) => console.log(error)
     // );
+
+    window.navigator.geolocation.watchPosition(position => {
+      this.heading = position.coords.heading;
+    },
+      error => {
+        this.errorMsg = error.message;
+      },
+      {
+        enableHighAccuracy: true,
+      }
+    );
   }
 
   setLocationCenter() {
