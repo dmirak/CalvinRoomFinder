@@ -31,7 +31,7 @@
   {
     "roomNumber": "NH052C",
     "latitude": 42.9314062,
-    "longitude": 42.9314131,
+    "longitude": -85.5888711,
     "altitude": 0
   },
   {
@@ -368,7 +368,7 @@
   {
     "roomNumber": "NH189",
     "latitude": 42.9317586,
-    "longitude": -42.9317586,
+    "longitude": -85.5890953,
     "altitude": 10
   },
   {
@@ -404,7 +404,7 @@
   {
     "roomNumber": "NH193",
     "latitude": 42.9316771,
-    "longitude": -42.9316771,
+    "longitude": -85.5890496,
     "altitude": 10
   },
   {
@@ -602,7 +602,7 @@
   {
     "roomNumber": "NH284",
     "latitude": 42.9319086,
-    "longitude": -42.9319086,
+    "longitude": -85.588963,
     "altitude": 20
   },
   {
