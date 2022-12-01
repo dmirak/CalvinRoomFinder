@@ -1,10 +1,9 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 //import { DeviceOrientation, DeviceOrientationCompassHeading } from '@awesome-cordova-plugins/device-orientation/ngx';
 
 declare const google: any;
 
-export interface RoomInfo {
-  name: string;
+interface LatLng {
   lat: number;
   lng: number;
 }
@@ -23,29 +22,23 @@ export class MapPage {
   userLocation = { lat: 0, lng: 0 };
   isItemAvailable = false;
   markerCreated: boolean = false;
+  selectedRoom: LatLng;
+  tempServices: any;
+  tempRenderer: any;
+  pathAlreadyExist: boolean = false;
 
-  public roomList: RoomInfo[] = [
-    {
-      name: 'sb301',
-      lat: 42.93119,
-      lng: -85.58926,
-    },
-    {
-      name: 'sb201',
-      lat: 42.93,
-      lng: -85.58,
-    },
-    {
-      name: 'hh334',
-      lat: 42.91395,
-      lng: -85.57342,
-    },
-  ];
+  public data: any = [];
+  public roomList: any = [];
 
-  public selectedRoom: RoomInfo;
   // constructor(private deviceOrientation: DeviceOrientation) { }
 
   ionViewDidEnter() {
+    fetch('./assets/data/rooms.json')
+      .then((res) => res.json())
+      .then((json) => {
+        this.data = json;
+      });
+    this.roomList = [...this.data];
     this.showMap();
   }
 
@@ -145,32 +138,49 @@ export class MapPage {
     return (radian * 180) / Math.PI;
   }
 
-  getItems(ev: any) {
-    // set val to the value of the searchbar
-    const val = ev.target.value;
+  initializeRoomList() {}
 
+  async getItems(ev: any) {
+    //await this.initializeRoomList();
+    // set val to the value of the searchbar
+    const val = ev.target.value.toUpperCase();
     if (val && val.trim() !== '') {
       this.isItemAvailable = true;
-      // eslint-disable-next-line arrow-body-style
-      // this.roomList.forEach((item) => {
-      //   console.log(item.name.toUpperCase());
-      //   return item.name.toUpperCase();
-      // });
+      this.roomList = this.data.filter((item) => {
+        return item.roomNumber.indexOf(val) > -1;
+      });
     } else {
       this.isItemAvailable = false;
     }
   }
 
-  createMarker(room: RoomInfo): void {
-    this.selectedRoom = room;
+  createPath(room: any): void {
+    this.selectedRoom = { lat: room.latitude, lng: room.longitude };
     const directionsService = new google.maps.DirectionsService();
     const directionsRenderer = new google.maps.DirectionsRenderer();
 
-    this.calcRoute(directionsService, directionsRenderer);
+    if (!this.pathAlreadyExist) {
+      this.tempServices = directionsService;
+      this.tempRenderer = directionsRenderer;
 
-    directionsRenderer.setMap(this.map);
+      this.calcRoute(this.tempServices, this.tempRenderer);
 
-    console.log('Created marker for: ' + this.selectedRoom.name);
+      this.tempRenderer.setMap(this.map);
+      this.pathAlreadyExist = true;
+    } else {
+      this.tempRenderer.setMap(null);
+
+      this.tempServices = directionsService;
+      this.tempRenderer = directionsRenderer;
+
+      this.calcRoute(this.tempServices, this.tempRenderer);
+
+      this.tempRenderer.setMap(this.map);
+    }
+
+    console.log('Created marker for: ' + room.roomNumber);
+    (document.getElementById('search') as HTMLInputElement).value =
+      room.roomNumber;
     this.isItemAvailable = false;
   }
 
