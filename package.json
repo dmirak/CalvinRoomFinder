@@ -35,7 +35,7 @@
     "@ionic/storage-angular": "^3.0.6",
     "cordova-plugin-device-orientation": "^2.0.1",
     "cordova-plugin-geolocation": "^4.1.0",
-    "firebase-tools": "^11.15.0",
+    "firebase-tools": "^11.16.1",
     "ionicons": "^6.0.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
