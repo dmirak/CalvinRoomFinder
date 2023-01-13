@@ -28,7 +28,8 @@ export class MapPage {
   selectedRoom: LatLng;
   tempServices: any;
   tempRenderer: any;
-  pathAlreadyExist: boolean = false;
+  pathAlreadyExist = false;
+  routeIntervalID: any;
 
   public data: any = [];
   public roomList: any = [];
@@ -158,7 +159,7 @@ export class MapPage {
     return (radian * 180) / Math.PI;
   }
 
-  initializeRoomList() {}
+  initializeRoomList() { }
 
   async getItems(ev: any) {
     //await this.initializeRoomList();
@@ -166,9 +167,7 @@ export class MapPage {
     const val = ev.target.value.toUpperCase();
     if (val && val.trim() !== '') {
       this.isItemAvailable = true;
-      this.roomList = this.data.filter((item) => {
-        return item.roomNumber.indexOf(val) > -1;
-      });
+      this.roomList = this.data.filter((item) => item.roomNumber.indexOf(val) > -1);
     } else {
       this.isItemAvailable = false;
     }
@@ -177,26 +176,21 @@ export class MapPage {
   createPath(room: any): void {
     this.selectedRoom = { lat: room.latitude, lng: room.longitude };
     const directionsService = new google.maps.DirectionsService();
-    const directionsRenderer = new google.maps.DirectionsRenderer();
+    const directionsRenderer = new google.maps.DirectionsRenderer({
+      suppressMarkers: true
+    });
 
-    if (!this.pathAlreadyExist) {
-      this.tempServices = directionsService;
-      this.tempRenderer = directionsRenderer;
+    this.tempServices = directionsService;
+    this.tempRenderer = directionsRenderer;
 
+    this.tempRenderer.setMap(null);
+    clearInterval(this.routeIntervalID);
+
+    this.routeIntervalID = setInterval(() => {
       this.calcRoute(this.tempServices, this.tempRenderer);
 
       this.tempRenderer.setMap(this.map);
-      this.pathAlreadyExist = true;
-    } else {
-      this.tempRenderer.setMap(null);
-
-      this.tempServices = directionsService;
-      this.tempRenderer = directionsRenderer;
-
-      this.calcRoute(this.tempServices, this.tempRenderer);
-
-      this.tempRenderer.setMap(this.map);
-    }
+    }, 1000);
 
     console.log('Created marker for: ' + room.roomNumber);
     (document.getElementById('search') as HTMLInputElement).value =
