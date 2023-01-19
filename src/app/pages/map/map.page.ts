@@ -61,12 +61,14 @@ export class MapPage {
       this.userLocation.lng
     );
     const options = {
+      mapTypeId: google.maps.MapTypeId.HYBRID,
       center: location,
       zoom: 18,
       disableDefaultUI: true,
+
     };
     this.map = await new google.maps.Map(this.mapRef.nativeElement, options);
-    await this.setLocationCenter();
+    this.setLocationCenter();
 
     navigator.geolocation.watchPosition((position) => {
       const previousCoords = this.userLocation;
@@ -177,7 +179,8 @@ export class MapPage {
     this.selectedRoom = { lat: room.latitude, lng: room.longitude };
     const directionsService = new google.maps.DirectionsService();
     const directionsRenderer = new google.maps.DirectionsRenderer({
-      suppressMarkers: true
+      suppressMarkers: true,
+      preserveViewport: true
     });
 
     this.tempServices = directionsService;
@@ -188,8 +191,9 @@ export class MapPage {
 
     this.routeIntervalID = setInterval(() => {
       this.calcRoute(this.tempServices, this.tempRenderer);
-
       this.tempRenderer.setMap(this.map);
+      this.setLocationCenter();
+      this.map.setHeading(this.heading);
     }, 1000);
 
     console.log('Created marker for: ' + room.roomNumber);
