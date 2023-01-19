@@ -22,7 +22,7 @@ export class MapPage {
   userLocation = { lat: 0, lng: 0 };
   isItemAvailable = false;
   markerCreated = false;
-  heading: number | undefined;
+  heading: any;
   userDirection = 0;
   errorMsg: string;
   selectedRoom: LatLng;
@@ -30,6 +30,7 @@ export class MapPage {
   tempRenderer: any;
   pathAlreadyExist = false;
   routeIntervalID: any;
+  autoRotateOn: boolean = false;
 
   public data: any = [];
   public roomList: any = [];
@@ -47,6 +48,18 @@ export class MapPage {
   }
 
   async showMap() {
+    window.navigator.geolocation.watchPosition(
+      (position) => {
+        this.heading = position.coords.heading;
+      },
+      (error) => {
+        this.errorMsg = error.message;
+      },
+      {
+        enableHighAccuracy: true,
+      }
+    );
+
     await navigator.geolocation.getCurrentPosition(
       (position: GeolocationPosition) => {
         const pos = {
@@ -64,6 +77,7 @@ export class MapPage {
       center: location,
       zoom: 18,
       disableDefaultUI: true,
+      heading: this.heading,
     };
     this.map = await new google.maps.Map(this.mapRef.nativeElement, options);
     await this.setLocationCenter();
@@ -81,7 +95,7 @@ export class MapPage {
       //   this.userLocation
       // );
 
-      this.userDirection = this.heading ?? this.userDirection;
+      //this.userDirection = this.heading ?? this.userDirection;
 
       if (!this.userMarker) {
         this.userMarker = new google.maps.Marker({
@@ -89,7 +103,7 @@ export class MapPage {
             fillColor: 'blue',
             fillOpacity: 1,
             path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-            rotation: this.userDirection,
+            rotation: this.heading,
             scale: 7,
             strokeColor: 'white',
             strokeWeight: 2,
@@ -103,7 +117,7 @@ export class MapPage {
             fillColor: 'blue',
             fillOpacity: 1,
             path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-            rotation: this.userDirection,
+            rotation: this.heading,
             scale: 7,
             strokeColor: 'white',
             strokeWeight: 2,
@@ -120,18 +134,6 @@ export class MapPage {
     //   (data: DeviceOrientationCompassHeading) => console.log(data),
     //   (error: any) => console.log(error)
     // );
-
-    window.navigator.geolocation.watchPosition(
-      (position) => {
-        this.heading = position.coords.heading;
-      },
-      (error) => {
-        this.errorMsg = error.message;
-      },
-      {
-        enableHighAccuracy: true,
-      }
-    );
   }
 
   setLocationCenter() {
@@ -146,20 +148,20 @@ export class MapPage {
     );
   }
 
-  getCurrentDirection(previousCoords, currentCoords) {
-    const diffLat = currentCoords.lat - previousCoords.lat;
-    const diffLng = currentCoords.lng - previousCoords.lng;
-    const anticlockwiseAngleFromEast = this.convertToDegrees(
-      Math.atan2(diffLat, diffLng)
-    );
-    const clockwiseAngleFromNorth = 90 - anticlockwiseAngleFromEast;
-    return clockwiseAngleFromNorth;
-  }
-  convertToDegrees(radian) {
-    return (radian * 180) / Math.PI;
-  }
+  // getCurrentDirection(previousCoords, currentCoords) {
+  //   const diffLat = currentCoords.lat - previousCoords.lat;
+  //   const diffLng = currentCoords.lng - previousCoords.lng;
+  //   const anticlockwiseAngleFromEast = this.convertToDegrees(
+  //     Math.atan2(diffLat, diffLng)
+  //   );
+  //   const clockwiseAngleFromNorth = 90 - anticlockwiseAngleFromEast;
+  //   return clockwiseAngleFromNorth;
+  // }
+  // convertToDegrees(radian) {
+  //   return (radian * 180) / Math.PI;
+  // }
 
-  initializeRoomList() { }
+  initializeRoomList() {}
 
   async getItems(ev: any) {
     //await this.initializeRoomList();
@@ -167,7 +169,9 @@ export class MapPage {
     const val = ev.target.value.toUpperCase();
     if (val && val.trim() !== '') {
       this.isItemAvailable = true;
-      this.roomList = this.data.filter((item) => item.roomNumber.indexOf(val) > -1);
+      this.roomList = this.data.filter(
+        (item) => item.roomNumber.indexOf(val) > -1
+      );
     } else {
       this.isItemAvailable = false;
     }
@@ -177,20 +181,32 @@ export class MapPage {
     this.selectedRoom = { lat: room.latitude, lng: room.longitude };
     const directionsService = new google.maps.DirectionsService();
     const directionsRenderer = new google.maps.DirectionsRenderer({
-      suppressMarkers: true
+      suppressMarkers: true,
     });
 
-    this.tempServices = directionsService;
-    this.tempRenderer = directionsRenderer;
+    if (!this.pathAlreadyExist) {
+      this.pathAlreadyExist = true;
 
-    this.tempRenderer.setMap(null);
-    clearInterval(this.routeIntervalID);
+      this.tempServices = directionsService;
+      this.tempRenderer = directionsRenderer;
 
-    this.routeIntervalID = setInterval(() => {
-      this.calcRoute(this.tempServices, this.tempRenderer);
+      this.routeIntervalID = setInterval(() => {
+        this.calcRoute(this.tempServices, this.tempRenderer);
 
-      this.tempRenderer.setMap(this.map);
-    }, 1000);
+        this.tempRenderer.setMap(this.map);
+      }, 1000);
+    } else {
+      this.tempRenderer.setMap(null);
+      clearInterval(this.routeIntervalID);
+
+      this.tempServices = directionsService;
+      this.tempRenderer = directionsRenderer;
+      this.routeIntervalID = setInterval(() => {
+        this.calcRoute(this.tempServices, this.tempRenderer);
+
+        this.tempRenderer.setMap(this.map);
+      }, 1000);
+    }
 
     console.log('Created marker for: ' + room.roomNumber);
     (document.getElementById('search') as HTMLInputElement).value =
