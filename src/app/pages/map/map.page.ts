@@ -74,13 +74,13 @@ export class MapPage {
       this.userLocation.lng
     );
     const options = {
+      mapTypeId: google.maps.MapTypeId.HYBRID,
       center: location,
       zoom: 18,
       disableDefaultUI: true,
-      heading: this.heading,
     };
     this.map = await new google.maps.Map(this.mapRef.nativeElement, options);
-    await this.setLocationCenter();
+    this.setLocationCenter();
 
     navigator.geolocation.watchPosition((position) => {
       const previousCoords = this.userLocation;
@@ -182,6 +182,7 @@ export class MapPage {
     const directionsService = new google.maps.DirectionsService();
     const directionsRenderer = new google.maps.DirectionsRenderer({
       suppressMarkers: true,
+      preserveViewport: true
     });
 
     if (!this.pathAlreadyExist) {
@@ -190,11 +191,12 @@ export class MapPage {
       this.tempServices = directionsService;
       this.tempRenderer = directionsRenderer;
 
-      this.routeIntervalID = setInterval(() => {
-        this.calcRoute(this.tempServices, this.tempRenderer);
-
-        this.tempRenderer.setMap(this.map);
-      }, 1000);
+    this.routeIntervalID = setInterval(() => {
+      this.calcRoute(this.tempServices, this.tempRenderer);
+      this.tempRenderer.setMap(this.map);
+      this.setLocationCenter();
+      this.map.setHeading(this.heading);
+    }, 1000);
     } else {
       this.tempRenderer.setMap(null);
       clearInterval(this.routeIntervalID);
@@ -202,9 +204,10 @@ export class MapPage {
       this.tempServices = directionsService;
       this.tempRenderer = directionsRenderer;
       this.routeIntervalID = setInterval(() => {
-        this.calcRoute(this.tempServices, this.tempRenderer);
-
-        this.tempRenderer.setMap(this.map);
+      this.calcRoute(this.tempServices, this.tempRenderer);
+      this.tempRenderer.setMap(this.map);
+      this.setLocationCenter();
+      this.map.setHeading(this.heading);
       }, 1000);
     }
 

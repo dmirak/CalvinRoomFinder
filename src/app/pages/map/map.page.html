@@ -1,21 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>Map</ion-title>
-    <ion-button slot="end" (click)="setLocationCenter()">
-      current Location
-    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <div>
-    <ion-searchbar
-      id="search"
-      type="search"
-      placeholder="Enter the room number"
-      [debounce]="1000"
-      (ionInput)="getItems($event)"
-    >
+    <ion-searchbar id="search" type="search" placeholder="Enter the room number" [debounce]="1000"
+      (ionInput)="getItems($event)">
     </ion-searchbar>
     <ion-list *ngIf="isItemAvailable">
       <ion-buttons id="location" *ngFor="let room of roomList">
