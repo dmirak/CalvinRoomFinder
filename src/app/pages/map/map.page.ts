@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, Renderer2 } from '@angular/core';
 //import { DeviceOrientation, DeviceOrientationCompassHeading } from '@awesome-cordova-plugins/device-orientation/ngx';
 
 declare const google: any;
@@ -30,12 +30,12 @@ export class MapPage {
   tempRenderer: any;
   pathAlreadyExist = false;
   routeIntervalID: any;
-  autoRotateOn: boolean = false;
+  autoRotateOn = false;
 
   public data: any = [];
   public roomList: any = [];
 
-  // constructor(private deviceOrientation: DeviceOrientation) { }
+  constructor(private renderer: Renderer2) { }
 
   ionViewDidEnter() {
     fetch('./assets/data/rooms.json')
@@ -74,7 +74,6 @@ export class MapPage {
       this.userLocation.lng
     );
     const options = {
-      mapTypeId: google.maps.MapTypeId.HYBRID,
       center: location,
       zoom: 18,
       disableDefaultUI: true,
@@ -161,7 +160,7 @@ export class MapPage {
   //   return (radian * 180) / Math.PI;
   // }
 
-  initializeRoomList() {}
+  initializeRoomList() { }
 
   async getItems(ev: any) {
     //await this.initializeRoomList();
@@ -187,29 +186,19 @@ export class MapPage {
 
     if (!this.pathAlreadyExist) {
       this.pathAlreadyExist = true;
+    } else {
+      this.tempRenderer.setMap(null);
+      clearInterval(this.routeIntervalID);
+    }
 
-      this.tempServices = directionsService;
-      this.tempRenderer = directionsRenderer;
+    this.tempServices = directionsService;
+    this.tempRenderer = directionsRenderer;
 
     this.routeIntervalID = setInterval(() => {
       this.calcRoute(this.tempServices, this.tempRenderer);
       this.tempRenderer.setMap(this.map);
       this.setLocationCenter();
-      this.map.setHeading(this.heading);
     }, 1000);
-    } else {
-      this.tempRenderer.setMap(null);
-      clearInterval(this.routeIntervalID);
-
-      this.tempServices = directionsService;
-      this.tempRenderer = directionsRenderer;
-      this.routeIntervalID = setInterval(() => {
-      this.calcRoute(this.tempServices, this.tempRenderer);
-      this.tempRenderer.setMap(this.map);
-      this.setLocationCenter();
-      this.map.setHeading(this.heading);
-      }, 1000);
-    }
 
     console.log('Created marker for: ' + room.roomNumber);
     (document.getElementById('search') as HTMLInputElement).value =
