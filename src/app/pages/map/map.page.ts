@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, Renderer2 } from '@angular/core';
 //import { DeviceOrientation, DeviceOrientationCompassHeading } from '@awesome-cordova-plugins/device-orientation/ngx';
 import { ToastController } from '@ionic/angular';
 
@@ -208,30 +208,20 @@ export class MapPage {
       preserveViewport: true,
     });
 
+    if (!this.pathAlreadyExist) {
+      this.pathAlreadyExist = true;
+    } else {
+      this.tempRenderer.setMap(null);
+      clearInterval(this.routeIntervalID);
+    }
+
+    this.tempServices = directionsService;
+    this.tempRenderer = directionsRenderer;
+
     this.routeIntervalID = setInterval(() => {
-      if (!this.pathAlreadyExist) {
-        this.pathAlreadyExist = true;
-
-        this.tempServices = directionsService;
-        this.tempRenderer = directionsRenderer;
-
-        this.calcRoute(this.tempServices, this.tempRenderer);
-        this.calcDistance();
-        this.tempRenderer.setMap(this.map);
-        this.setLocationCenter();
-        this.map.setHeading(this.heading);
-      } else {
-        this.tempRenderer.setMap(null);
-        //clearInterval(this.routeIntervalID);
-
-        this.tempServices = directionsService;
-        this.tempRenderer = directionsRenderer;
-        this.calcRoute(this.tempServices, this.tempRenderer);
-        this.calcDistance();
-        this.tempRenderer.setMap(this.map);
-        this.setLocationCenter();
-        this.map.setHeading(this.heading);
-      }
+      this.calcRoute(this.tempServices, this.tempRenderer);
+      this.tempRenderer.setMap(this.map);
+      this.setLocationCenter();
     }, 1000);
 
     console.log('Created marker for: ' + room.roomNumber);
