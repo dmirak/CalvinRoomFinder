@@ -220,6 +220,7 @@ export class MapPage {
 
     this.routeIntervalID = setInterval(() => {
       this.calcRoute(this.tempServices, this.tempRenderer);
+      this.calcDistance();
       this.tempRenderer.setMap(this.map);
       this.setLocationCenter();
     }, 1000);
