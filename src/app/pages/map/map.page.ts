@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild, Renderer2 } from '@angular/core';
 //import { DeviceOrientation, DeviceOrientationCompassHeading } from '@awesome-cordova-plugins/device-orientation/ngx';
+import { ToastController } from '@ionic/angular';
 
 declare const google: any;
 
@@ -30,12 +31,13 @@ export class MapPage {
   tempRenderer: any;
   pathAlreadyExist = false;
   routeIntervalID: any;
-  autoRotateOn = false;
+  distance: string;
+  toast: any = null;
 
   public data: any = [];
   public roomList: any = [];
 
-  constructor(private renderer: Renderer2) { }
+  constructor(private toastController: ToastController) {}
 
   ionViewDidEnter() {
     fetch('./assets/data/rooms.json')
@@ -74,6 +76,7 @@ export class MapPage {
       this.userLocation.lng
     );
     const options = {
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
       center: location,
       zoom: 18,
       disableDefaultUI: true,
@@ -135,6 +138,27 @@ export class MapPage {
     // );
   }
 
+  async presentToast() {
+    if (this.toast === null) {
+      this.toast = await this.toastController.create({
+        message: this.distance,
+        position: 'top',
+        cssClass: 'custom-toast',
+        buttons: [
+          {
+            text: 'Dismiss',
+            role: 'cancel',
+          },
+        ],
+      });
+      await this.toast.present();
+
+      await this.toast.onDidDismiss();
+      console.log('dismissed');
+      this.toast = null;
+    }
+  }
+
   setLocationCenter() {
     navigator.geolocation.getCurrentPosition(
       (position: GeolocationPosition) => {
@@ -160,7 +184,7 @@ export class MapPage {
   //   return (radian * 180) / Math.PI;
   // }
 
-  initializeRoomList() { }
+  initializeRoomList() {}
 
   async getItems(ev: any) {
     //await this.initializeRoomList();
@@ -181,7 +205,7 @@ export class MapPage {
     const directionsService = new google.maps.DirectionsService();
     const directionsRenderer = new google.maps.DirectionsRenderer({
       suppressMarkers: true,
-      preserveViewport: true
+      preserveViewport: true,
     });
 
     if (!this.pathAlreadyExist) {
@@ -196,6 +220,7 @@ export class MapPage {
 
     this.routeIntervalID = setInterval(() => {
       this.calcRoute(this.tempServices, this.tempRenderer);
+      this.calcDistance();
       this.tempRenderer.setMap(this.map);
       this.setLocationCenter();
     }, 1000);
@@ -224,5 +249,30 @@ export class MapPage {
       .catch((e) => {
         console.log(e);
       });
+  }
+
+  async calcDistance() {
+    const service = new google.maps.DistanceMatrixService();
+    const user = new google.maps.Marker({
+      lat: this.userLocation.lat,
+      lng: this.userLocation.lng,
+    });
+    const destination = new google.maps.Marker({
+      lat: this.selectedRoom.lat,
+      lng: this.selectedRoom.lng,
+    });
+
+    const request = {
+      origins: [user],
+      destinations: [destination],
+      travelMode: google.maps.TravelMode.WALKING,
+      unitSystem: google.maps.UnitSystem.METRIC,
+    };
+
+    await service.getDistanceMatrix(request).then((response) => {
+      this.distance = response['rows'][0]['elements'][0]['duration']['text'];
+    });
+    console.log(this.distance);
+    this.presentToast();
   }
 }
