@@ -1,6 +1,4 @@
-import { Component, ElementRef, ViewChild, Renderer2 } from '@angular/core';
-//import { DeviceOrientation, DeviceOrientationCompassHeading } from '@awesome-cordova-plugins/device-orientation/ngx';
-import { ToastController } from '@ionic/angular';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 declare const google: any;
 
@@ -29,15 +27,14 @@ export class MapPage {
   selectedRoom: LatLng;
   tempServices: any;
   tempRenderer: any;
-  pathAlreadyExist = false;
+  isRouting = false;
   routeIntervalID: any;
   distance: string;
-  toast: any = null;
 
   public data: any = [];
   public roomList: any = [];
 
-  constructor(private toastController: ToastController) {}
+  constructor() { }
 
   ionViewDidEnter() {
     fetch('./assets/data/rooms.json')
@@ -138,27 +135,6 @@ export class MapPage {
     // );
   }
 
-  async presentToast() {
-    if (this.toast === null) {
-      this.toast = await this.toastController.create({
-        message: this.distance,
-        position: 'top',
-        cssClass: 'custom-toast',
-        buttons: [
-          {
-            text: 'Dismiss',
-            role: 'cancel',
-          },
-        ],
-      });
-      await this.toast.present();
-
-      await this.toast.onDidDismiss();
-      console.log('dismissed');
-      this.toast = null;
-    }
-  }
-
   setLocationCenter() {
     navigator.geolocation.getCurrentPosition(
       (position: GeolocationPosition) => {
@@ -184,7 +160,7 @@ export class MapPage {
   //   return (radian * 180) / Math.PI;
   // }
 
-  initializeRoomList() {}
+  initializeRoomList() { }
 
   async getItems(ev: any) {
     //await this.initializeRoomList();
@@ -208,8 +184,8 @@ export class MapPage {
       preserveViewport: true,
     });
 
-    if (!this.pathAlreadyExist) {
-      this.pathAlreadyExist = true;
+    if (!this.isRouting) {
+      this.isRouting = true;
     } else {
       this.tempRenderer.setMap(null);
       clearInterval(this.routeIntervalID);
@@ -225,7 +201,6 @@ export class MapPage {
       this.setLocationCenter();
     }, 1000);
 
-    console.log('Created marker for: ' + room.roomNumber);
     (document.getElementById('search') as HTMLInputElement).value =
       room.roomNumber;
     this.isItemAvailable = false;
@@ -270,9 +245,7 @@ export class MapPage {
     };
 
     await service.getDistanceMatrix(request).then((response) => {
-      this.distance = response['rows'][0]['elements'][0]['duration']['text'];
+      this.distance = response.rows[0].elements[0].duration.text;
     });
-    console.log(this.distance);
-    this.presentToast();
   }
 }
