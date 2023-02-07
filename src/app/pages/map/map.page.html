@@ -6,13 +6,8 @@
 
 <ion-content [fullscreen]="true">
   <div>
-    <ion-searchbar
-      id="search"
-      type="search"
-      placeholder="Enter the room number"
-      [debounce]="1000"
-      (ionInput)="getItems($event)"
-    >
+    <ion-searchbar *ngIf="!isRouting" id="search" type="search" placeholder="Enter the room number" [debounce]="1000"
+      (ionInput)="getItems($event)">
     </ion-searchbar>
     <ion-list *ngIf="isItemAvailable">
       <ion-buttons id="location" *ngFor="let room of roomList">
@@ -24,4 +19,8 @@
   </div>
 
   <div #map id="map"></div>
+
+  <ion-modal id="modal" #modal trigger="create-path" [initialBreakpoint]="0.25" [breakpoints]="[0.25]">
+    <p>{{ this.distance }}</p>
+  </ion-modal>
 </ion-content>
