@@ -11,7 +11,7 @@
     </ion-searchbar>
     <ion-list *ngIf="isItemAvailable">
       <ion-buttons id="location" *ngFor="let room of roomList">
-        <ion-button id="create-path" (click)="createPath(room)">
+        <ion-button (click)="createPath(room)">
           {{ room.roomNumber }}
         </ion-button>
       </ion-buttons>
@@ -20,7 +20,7 @@
 
   <div #map id="map"></div>
 
-  <ion-modal #modal trigger="create-path" [initialBreakpoint]="0.25" [breakpoints]="[0.25]">
+  <ion-modal id="modal" #modal trigger="create-path" [initialBreakpoint]="0.25" [breakpoints]="[0.25]">
     <p>{{ this.distance }}</p>
   </ion-modal>
 </ion-content>

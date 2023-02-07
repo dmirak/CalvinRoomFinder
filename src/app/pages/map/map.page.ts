@@ -175,7 +175,8 @@ export class MapPage {
       this.isItemAvailable = false;
     }
   }
-
+  // The only way to do this is to use a separate component.
+  // I need to subscribe to changes on the distance data
   createPath(room: any): void {
     this.selectedRoom = { lat: room.latitude, lng: room.longitude };
     const directionsService = new google.maps.DirectionsService();
