@@ -9,6 +9,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { MapPageRoutingModule } from './map-routing.module';
 
+import { NavMenuComponentModule } from 'src/app/components/nav-menu/nav-menu.module';
+
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -17,7 +19,8 @@ import { MapPageRoutingModule } from './map-routing.module';
     FormsModule,
     ExploreContainerComponentModule,
     MapPageRoutingModule,
+    NavMenuComponentModule,
   ],
   declarations: [MapPage],
 })
-export class MapPageModule {}
+export class MapPageModule { }

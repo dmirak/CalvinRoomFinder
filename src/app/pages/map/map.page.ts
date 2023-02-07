@@ -1,4 +1,8 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { Subject } from 'rxjs';
+
+import { NavMenuComponent } from 'src/app/components/nav-menu/nav-menu.component';
 
 declare const google: any;
 
@@ -30,11 +34,14 @@ export class MapPage {
   isRouting = false;
   routeIntervalID: any;
   distance: string;
+  distanceSubject = new Subject<string>();
 
   public data: any = [];
   public roomList: any = [];
 
-  constructor() { }
+  constructor(private modalCtrl: ModalController) {
+    this.distanceSubject.next('');
+  }
 
   ionViewDidEnter() {
     fetch('./assets/data/rooms.json')
@@ -175,22 +182,17 @@ export class MapPage {
       this.isItemAvailable = false;
     }
   }
-  // The only way to do this is to use a separate component.
-  // I need to subscribe to changes on the distance data
-  createPath(room: any): void {
+
+  async createPath(room: any): Promise<void> {
+    this.isRouting = true;
+    this.createModal();
+
     this.selectedRoom = { lat: room.latitude, lng: room.longitude };
     const directionsService = new google.maps.DirectionsService();
     const directionsRenderer = new google.maps.DirectionsRenderer({
       suppressMarkers: true,
       preserveViewport: true,
     });
-
-    if (!this.isRouting) {
-      this.isRouting = true;
-    } else {
-      this.tempRenderer.setMap(null);
-      clearInterval(this.routeIntervalID);
-    }
 
     this.tempServices = directionsService;
     this.tempRenderer = directionsRenderer;
@@ -247,6 +249,24 @@ export class MapPage {
 
     await service.getDistanceMatrix(request).then((response) => {
       this.distance = response.rows[0].elements[0].duration.text;
+      this.distanceSubject.next(this.distance);
+    });
+  }
+
+  async createModal() {
+    const navMenu = await this.modalCtrl.create({
+      component: NavMenuComponent,
+      componentProps: { distanceSubject: this.distanceSubject },
+      initialBreakpoint: 0.25,
+      breakpoints: [0.25],
+      handle: false,
+    });
+    navMenu.present();
+
+    navMenu.onDidDismiss().then((data) => {
+      this.isRouting = false;
+      this.tempRenderer.setMap(null);
+      clearInterval(this.routeIntervalID);
     });
   }
 }
