@@ -23,18 +23,20 @@ export class MapPage {
   userIcon = '../../../assets/user-icon.png';
   userMarker: any;
   userLocation = { lat: 0, lng: 0 };
-  isItemAvailable = false;
-  markerCreated = false;
+  isSearching: boolean = false;
+  isItemAvailable: boolean = false;
+  markerCreated: boolean = false;
   heading: any;
   userDirection = 0;
   errorMsg: string;
   selectedRoom: LatLng;
   tempServices: any;
   tempRenderer: any;
-  isRouting = false;
+  isRouting: boolean = false;
   routeIntervalID: any;
   distance: string;
   distanceSubject = new Subject<string>();
+  noSearchResult: string[] = ['No results found'];
 
   public data: any = [];
   public roomList: any = [];
@@ -167,23 +169,31 @@ export class MapPage {
   //   return (radian * 180) / Math.PI;
   // }
 
-  initializeRoomList() { }
+  initializeRoomList() {}
 
   async getItems(ev: any) {
     //await this.initializeRoomList();
     // set val to the value of the searchbar
     const val = ev.target.value.toUpperCase();
     if (val && val.trim() !== '') {
-      this.isItemAvailable = true;
+      this.isSearching = true;
       this.roomList = this.data.filter(
         (item) => item.roomNumber.indexOf(val) > -1
       );
+      if (this.roomList.length === 0) {
+        this.isItemAvailable = false;
+        this.roomList = this.noSearchResult;
+      } else {
+        this.isItemAvailable = true;
+      }
     } else {
+      this.isSearching = false;
       this.isItemAvailable = false;
     }
   }
 
   async createPath(room: any): Promise<void> {
+    this.isSearching = false;
     this.isRouting = true;
     this.createModal();
 
@@ -206,7 +216,7 @@ export class MapPage {
 
     (document.getElementById('search') as HTMLInputElement).value =
       room.roomNumber;
-    this.isItemAvailable = false;
+    this.isSearching = false;
   }
 
   calcRoute(directionsService, directionsRenderer) {
