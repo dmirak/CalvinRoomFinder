@@ -10,19 +10,26 @@ import { ModalController } from '@ionic/angular';
 export class NavMenuComponent implements OnDestroy {
 
   @Input() distanceSubject: Subject<string>;
+  @Input() durationSubject: Subject<string>;
   distance: string;
-  private subscription: Subscription;
+  duration: string;
+  private distanceSubscription: Subscription;
+  private durationSubscription: Subscription;
 
   constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() {
-    this.subscription = this.distanceSubject.subscribe((distance) => {
+    this.distanceSubscription = this.distanceSubject.subscribe((distance) => {
       this.distance = distance;
+    });
+    this.durationSubscription = this.durationSubject.subscribe((duration) => {
+      this.duration = duration;
     });
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.distanceSubscription.unsubscribe();
+    this.durationSubscription.unsubscribe();
   }
 
   close() {
