@@ -3,6 +3,8 @@ import { ModalController } from '@ionic/angular';
 import { Subject } from 'rxjs';
 
 import { NavMenuComponent } from 'src/app/components/nav-menu/nav-menu.component';
+// import { AboutComponent } from 'src/app/components/about/about.component';
+// import { MatDialog } from '@angular/material/dialog';
 
 declare const google: any;
 
@@ -23,9 +25,10 @@ export class MapPage {
   userIcon = '../../../assets/user-icon.png';
   userMarker: any;
   userLocation = { lat: 0, lng: 0 };
-  isSearching = false;
-  isItemAvailable = false;
-  markerCreated = false;
+  isSearching: boolean = false;
+  isShortNameAvailable: boolean = false;
+  isFullNameAvailable: boolean = false;
+  markerCreated: boolean = false;
   heading: any;
   userDirection = 0;
   errorMsg: string;
@@ -41,21 +44,32 @@ export class MapPage {
   durationSubject = new Subject<string>();
   noSearchResult: string[] = ['No results found'];
 
-  public data: any = [];
-  public roomList: any = [];
+  public dataShortName: any = [];
+  public dataFullName: any = [];
+  public roomListShortName: any = [];
+  public roomListFullName: any = [];
 
-  constructor(private modalCtrl: ModalController) {
+  constructor(private modalCtrl: ModalController) //private dialogRef: MatDialog
+  {
     this.distanceSubject.next('');
     this.durationSubject.next('');
   }
 
   ionViewDidEnter() {
+    // Get the list of rooms with shorten names such as NH, SB, etc
     fetch('./assets/data/rooms.json')
       .then((res) => res.json())
       .then((json) => {
-        this.data = json;
+        this.dataShortName = json;
       });
-    this.roomList = [...this.data];
+
+    // Get the list of rooms with full name such as NORTH HALL, etc
+    fetch('./assets/data/rooms2.json')
+      .then((res) => res.json())
+      .then((json) => {
+        this.dataFullName = json;
+      });
+
     this.showMap();
   }
 
@@ -143,7 +157,7 @@ export class MapPage {
     //this.addUserMarker();
 
     // this.deviceOrientation.getCurrentHeading().then(
-    //   (data: DeviceOrientationCompassHeading) => console.log(data),
+    //   (dataShortName: DeviceOrientationCompassHeading) => console.log(dataShortName),
     //   (error: any) => console.log(error)
     // );
   }
@@ -173,26 +187,33 @@ export class MapPage {
   //   return (radian * 180) / Math.PI;
   // }
 
-  initializeRoomList() { }
-
   async getItems(ev: any) {
-    //await this.initializeRoomList();
     // set val to the value of the searchbar
     const val = ev.target.value.toUpperCase();
     if (val && val.trim() !== '') {
       this.isSearching = true;
-      this.roomList = this.data.filter(
+      this.roomListShortName = this.dataShortName.filter(
         (item) => item.roomNumber.indexOf(val) > -1
       );
-      if (this.roomList.length === 0) {
-        this.isItemAvailable = false;
-        this.roomList = this.noSearchResult;
+      if (this.roomListShortName.length === 0) {
+        this.isShortNameAvailable = false;
+        this.roomListFullName = this.dataFullName.filter(
+          (item) => item.roomNumber.indexOf(val) > -1
+        );
+        if (this.roomListFullName.length === 0) {
+          this.isShortNameAvailable = false;
+          this.roomListFullName = this.noSearchResult;
+        } else {
+          this.isFullNameAvailable = true;
+        }
       } else {
-        this.isItemAvailable = true;
+        this.isFullNameAvailable = false;
+        this.isShortNameAvailable = true;
       }
     } else {
       this.isSearching = false;
-      this.isItemAvailable = false;
+      this.isShortNameAvailable = false;
+      this.isFullNameAvailable = false;
     }
   }
 
@@ -218,9 +239,6 @@ export class MapPage {
       this.tempRenderer.setMap(this.map);
       this.setLocationCenter();
     }, 1000);
-
-    (document.getElementById('search') as HTMLInputElement).value = this.roomName;
-    this.isSearching = false;
   }
 
   calcRoute(directionsService, directionsRenderer) {
@@ -258,7 +276,7 @@ export class MapPage {
       origins: [user],
       destinations: [destination],
       travelMode: google.maps.TravelMode.WALKING,
-      unitSystem: google.maps.UnitSystem.METRIC,
+      unitSystem: google.maps.UnitSystem.IMPERIAL,
     };
 
     await service.getDistanceMatrix(request).then((response) => {
@@ -274,7 +292,7 @@ export class MapPage {
       component: NavMenuComponent,
       componentProps: {
         distanceSubject: this.distanceSubject,
-        durationSubject: this.durationSubject
+        durationSubject: this.durationSubject,
       },
       initialBreakpoint: 0.25,
       breakpoints: [0.25],
@@ -285,7 +303,12 @@ export class MapPage {
     navMenu.onDidDismiss().then((data) => {
       this.isRouting = false;
       this.tempRenderer.setMap(null);
+      this.roomName = null;
       clearInterval(this.routeIntervalID);
     });
+  }
+
+  openAboutDialog() {
+    //this.dialogRef.open(AboutComponent);
   }
 }
