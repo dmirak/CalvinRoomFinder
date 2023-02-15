@@ -30,6 +30,7 @@ export class MapPage {
   userDirection = 0;
   errorMsg: string;
   selectedRoom: LatLng;
+  roomName: string;
   tempServices: any;
   tempRenderer: any;
   isRouting = false;
@@ -201,6 +202,7 @@ export class MapPage {
     this.createModal();
 
     this.selectedRoom = { lat: room.latitude, lng: room.longitude };
+    this.roomName = room.roomNumber;
     const directionsService = new google.maps.DirectionsService();
     const directionsRenderer = new google.maps.DirectionsRenderer({
       suppressMarkers: true,
@@ -217,8 +219,7 @@ export class MapPage {
       this.setLocationCenter();
     }, 1000);
 
-    (document.getElementById('search') as HTMLInputElement).value =
-      room.roomNumber;
+    (document.getElementById('search') as HTMLInputElement).value = this.roomName;
     this.isSearching = false;
   }
 

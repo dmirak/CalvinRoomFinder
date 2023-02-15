@@ -1,19 +1,14 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Map</ion-title>
+    <ion-title *ngIf="!roomName">Map</ion-title>
+    <ion-title *ngIf="roomName">Destination: {{ roomName }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <div>
-    <ion-searchbar
-      *ngIf="!isRouting"
-      id="search"
-      type="search"
-      placeholder="Enter the room number"
-      [debounce]="1000"
-      (ionInput)="getItems($event)"
-    >
+    <ion-searchbar *ngIf="!isRouting" id="search" type="search" placeholder="Enter the room number" [debounce]="1000"
+      (ionInput)="getItems($event)">
     </ion-searchbar>
     <ion-list *ngIf="isSearching && !isItemAvailable">
       <ion-label id="location" *ngFor="let room of roomList">
@@ -31,13 +26,7 @@
 
   <div #map id="map"></div>
 
-  <ion-modal
-    id="modal"
-    #modal
-    trigger="create-path"
-    [initialBreakpoint]="0.25"
-    [breakpoints]="[0.25]"
-  >
+  <ion-modal id="modal" #modal trigger="create-path" [initialBreakpoint]="0.25" [breakpoints]="[0.25]">
     <p>{{ this.distance }}</p>
   </ion-modal>
 </ion-content>
