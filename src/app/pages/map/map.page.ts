@@ -23,19 +23,22 @@ export class MapPage {
   userIcon = '../../../assets/user-icon.png';
   userMarker: any;
   userLocation = { lat: 0, lng: 0 };
-  isSearching: boolean = false;
-  isItemAvailable: boolean = false;
-  markerCreated: boolean = false;
+  isSearching = false;
+  isItemAvailable = false;
+  markerCreated = false;
   heading: any;
   userDirection = 0;
   errorMsg: string;
   selectedRoom: LatLng;
+  roomName: string;
   tempServices: any;
   tempRenderer: any;
-  isRouting: boolean = false;
+  isRouting = false;
   routeIntervalID: any;
   distance: string;
   distanceSubject = new Subject<string>();
+  duration: string;
+  durationSubject = new Subject<string>();
   noSearchResult: string[] = ['No results found'];
 
   public data: any = [];
@@ -43,6 +46,7 @@ export class MapPage {
 
   constructor(private modalCtrl: ModalController) {
     this.distanceSubject.next('');
+    this.durationSubject.next('');
   }
 
   ionViewDidEnter() {
@@ -169,7 +173,7 @@ export class MapPage {
   //   return (radian * 180) / Math.PI;
   // }
 
-  initializeRoomList() {}
+  initializeRoomList() { }
 
   async getItems(ev: any) {
     //await this.initializeRoomList();
@@ -198,6 +202,7 @@ export class MapPage {
     this.createModal();
 
     this.selectedRoom = { lat: room.latitude, lng: room.longitude };
+    this.roomName = room.roomNumber;
     const directionsService = new google.maps.DirectionsService();
     const directionsRenderer = new google.maps.DirectionsRenderer({
       suppressMarkers: true,
@@ -214,8 +219,7 @@ export class MapPage {
       this.setLocationCenter();
     }, 1000);
 
-    (document.getElementById('search') as HTMLInputElement).value =
-      room.roomNumber;
+    (document.getElementById('search') as HTMLInputElement).value = this.roomName;
     this.isSearching = false;
   }
 
@@ -258,15 +262,20 @@ export class MapPage {
     };
 
     await service.getDistanceMatrix(request).then((response) => {
-      this.distance = response.rows[0].elements[0].duration.text;
+      this.distance = response.rows[0].elements[0].distance.text;
+      this.duration = response.rows[0].elements[0].duration.text;
       this.distanceSubject.next(this.distance);
+      this.durationSubject.next(this.duration);
     });
   }
 
   async createModal() {
     const navMenu = await this.modalCtrl.create({
       component: NavMenuComponent,
-      componentProps: { distanceSubject: this.distanceSubject },
+      componentProps: {
+        distanceSubject: this.distanceSubject,
+        durationSubject: this.durationSubject
+      },
       initialBreakpoint: 0.25,
       breakpoints: [0.25],
       handle: false,
