@@ -11,10 +11,14 @@ import { environment } from '../environments/environment';
 
 import { IonicStorageModule } from '@ionic/storage-angular';
 
+//import { MatCardModule } from '@angular/material/card';
+// import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    // MatCardModule,
+    // MatDialogModule,
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
     AppRoutingModule,
