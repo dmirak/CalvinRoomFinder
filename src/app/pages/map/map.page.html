@@ -1,30 +1,17 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-img src="..\assets\icon\CalvinUniv-Horiz-full-color-positive.png"></ion-img>
     <ion-title *ngIf="!roomName">Map</ion-title>
     <ion-title *ngIf="roomName">Destination: {{ roomName }}</ion-title>
-    <ion-button
-      id="aboutButton"
-      slot="end"
-      fill="clear"
-      (click)="openAboutDialog()"
-      >About</ion-button
-    > </ion-toolbar
-  ><ion-searchbar
-    *ngIf="!isRouting"
-    id="search"
-    type="search"
-    placeholder="Enter the room number"
-    [debounce]="1000"
-    (ionInput)="getItems($event)"
-  >
+    <ion-button id="aboutButton" slot="end" fill="clear" (click)="openAboutDialog()">About</ion-button>
+  </ion-toolbar><ion-searchbar *ngIf="!isRouting" id="search" type="search" placeholder="Enter the room number"
+    [debounce]="1000" (ionInput)="getItems($event)">
   </ion-searchbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <div>
-    <ion-list
-      *ngIf="isSearching && !isFullNameAvailable && !isShortNameAvailable"
-    >
+    <ion-list *ngIf="isSearching && !isFullNameAvailable && !isShortNameAvailable">
       <ion-label id="location" *ngFor="let room of roomListFullName">
         <ion-label> {{ room }} </ion-label>
       </ion-label>
@@ -47,13 +34,7 @@
 
   <div #map id="map"></div>
 
-  <ion-modal
-    id="modal"
-    #modal
-    trigger="create-path"
-    [initialBreakpoint]="0.25"
-    [breakpoints]="[0.25]"
-  >
+  <ion-modal id="modal" #modal trigger="create-path" [initialBreakpoint]="0.25" [breakpoints]="[0.25]">
     <p>{{ this.distance }}</p>
   </ion-modal>
 </ion-content>
