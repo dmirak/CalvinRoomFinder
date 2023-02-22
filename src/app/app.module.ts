@@ -11,10 +11,10 @@ import { environment } from '../environments/environment';
 
 import { IonicStorageModule } from '@ionic/storage-angular';
 
-//import { MatCardModule } from '@angular/material/card';
-// import { MatDialogModule } from '@angular/material/dialog';
+import { AboutComponent } from './components/about/about.component';
+
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, AboutComponent],
   imports: [
     BrowserModule,
     // MatCardModule,

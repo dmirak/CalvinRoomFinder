@@ -3,8 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { Subject } from 'rxjs';
 
 import { NavMenuComponent } from 'src/app/components/nav-menu/nav-menu.component';
-// import { AboutComponent } from 'src/app/components/about/about.component';
-// import { MatDialog } from '@angular/material/dialog';
+import { AboutComponent } from 'src/app/components/about/about.component';
 
 declare const google: any;
 
@@ -49,8 +48,7 @@ export class MapPage {
   public roomListShortName: any = [];
   public roomListFullName: any = [];
 
-  constructor(private modalCtrl: ModalController) //private dialogRef: MatDialog
-  {
+  constructor(private modalCtrl: ModalController) {
     this.distanceSubject.next('');
     this.durationSubject.next('');
   }
@@ -115,14 +113,6 @@ export class MapPage {
         lng: position.coords.longitude,
       };
 
-      // This will set userDirection based on change in coordinates
-      // this.userDirection = this.getCurrentDirection(
-      //   previousCoords,
-      //   this.userLocation
-      // );
-
-      //this.userDirection = this.heading ?? this.userDirection;
-
       if (!this.userMarker) {
         this.userMarker = new google.maps.Marker({
           icon: {
@@ -154,12 +144,6 @@ export class MapPage {
 
       this.userMarker.setMap(this.map);
     });
-    //this.addUserMarker();
-
-    // this.deviceOrientation.getCurrentHeading().then(
-    //   (dataShortName: DeviceOrientationCompassHeading) => console.log(dataShortName),
-    //   (error: any) => console.log(error)
-    // );
   }
 
   setLocationCenter() {
@@ -173,19 +157,6 @@ export class MapPage {
       }
     );
   }
-
-  // getCurrentDirection(previousCoords, currentCoords) {
-  //   const diffLat = currentCoords.lat - previousCoords.lat;
-  //   const diffLng = currentCoords.lng - previousCoords.lng;
-  //   const anticlockwiseAngleFromEast = this.convertToDegrees(
-  //     Math.atan2(diffLat, diffLng)
-  //   );
-  //   const clockwiseAngleFromNorth = 90 - anticlockwiseAngleFromEast;
-  //   return clockwiseAngleFromNorth;
-  // }
-  // convertToDegrees(radian) {
-  //   return (radian * 180) / Math.PI;
-  // }
 
   async getItems(ev: any) {
     // set val to the value of the searchbar
@@ -220,7 +191,7 @@ export class MapPage {
   async createPath(room: any): Promise<void> {
     this.isSearching = false;
     this.isRouting = true;
-    this.createModal();
+    this.createNavMenu();
 
     this.selectedRoom = { lat: room.latitude, lng: room.longitude };
     this.roomName = room.roomNumber;
@@ -287,7 +258,7 @@ export class MapPage {
     });
   }
 
-  async createModal() {
+  async createNavMenu() {
     const navMenu = await this.modalCtrl.create({
       component: NavMenuComponent,
       componentProps: {
@@ -296,6 +267,7 @@ export class MapPage {
       },
       initialBreakpoint: 0.25,
       breakpoints: [0.25],
+      backdropDismiss: false,
       handle: false,
     });
     navMenu.present();
@@ -308,7 +280,10 @@ export class MapPage {
     });
   }
 
-  openAboutDialog() {
-    //this.dialogRef.open(AboutComponent);
+  async createAboutModal() {
+    const aboutModal = await this.modalCtrl.create({
+      component: AboutComponent,
+    });
+    aboutModal.present();
   }
 }
