@@ -6,7 +6,7 @@
       id="aboutButton"
       slot="end"
       fill="clear"
-      (click)="openAboutDialog()"
+      (click)="createAboutModal()"
       >About</ion-button
     > </ion-toolbar
   ><ion-searchbar
@@ -54,6 +54,6 @@
     [initialBreakpoint]="0.25"
     [breakpoints]="[0.25]"
   >
-    <p>{{ this.distance }}</p>
+    <!-- <p>{{ this.distance }}</p> -->
   </ion-modal>
 </ion-content>
