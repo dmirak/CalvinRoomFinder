@@ -172,8 +172,7 @@ export class MapPage {
           (item) => item.roomNumber.indexOf(val) > -1
         );
         if (this.roomListFullName.length === 0) {
-          this.isShortNameAvailable = false;
-          this.roomListFullName = this.noSearchResult;
+          this.isFullNameAvailable = false;
         } else {
           this.isFullNameAvailable = true;
         }

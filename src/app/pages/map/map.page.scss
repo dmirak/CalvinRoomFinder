@@ -27,6 +27,33 @@ ion-img {
 }
 
 #aboutButton {
-  // --color: white;
+  --color: white;
   text-transform: none;
 }
+
+#routeName {
+  word-wrap: normal;
+}
+
+#roomFound {
+  --color: white;
+  width: 100%;
+}
+
+span.ion-text-left {
+  margin-right: auto;
+}
+
+#noResults {
+  color: white;
+  margin-left: 1%;
+}
+
+// Hide scroll
+// ion-content{
+//   width: calc(100% + 15px);
+// }
+// ion-content::part(scroll) {
+//   padding-right: 15px;
+// }
+
