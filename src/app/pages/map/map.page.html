@@ -1,32 +1,51 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-img slot="start" *ngIf="!roomName" src="..\assets\icon\compass.png"></ion-img>
-    <ion-title slot="start" *ngIf="roomName">Destination: {{ roomName }}</ion-title>
-    <ion-button id="aboutButton" slot="end" fill="clear" (click)="createAboutModal()">About</ion-button>
+    <ion-img
+      slot="start"
+      *ngIf="!roomName"
+      src="..\assets\icon\compass.png"
+    ></ion-img>
+    <ion-title slot="start" *ngIf="roomName">
+      <div class="ion-text-wrap">Destination: {{ roomName }}</div></ion-title
+    >
+    <ion-button
+      *ngIf="!roomName"
+      id="aboutButton"
+      slot="end"
+      fill="clear"
+      (click)="createAboutModal()"
+      >About</ion-button
+    >
   </ion-toolbar>
-  <ion-searchbar *ngIf="!isRouting" id="search" type="search" placeholder="Enter the room number" [debounce]="1000"
-    (ionInput)="getItems($event)">
+  <ion-searchbar
+    *ngIf="!isRouting"
+    id="search"
+    type="search"
+    placeholder="Enter the room number"
+    [debounce]="1000"
+    (ionInput)="getItems($event)"
+  >
   </ion-searchbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <div>
-    <ion-list *ngIf="isSearching && !isFullNameAvailable && !isShortNameAvailable">
-      <ion-label id="location" *ngFor="let room of roomListFullName">
-        <ion-label> {{ room }} </ion-label>
-      </ion-label>
+    <ion-list
+      *ngIf="isSearching && !isFullNameAvailable && !isShortNameAvailable"
+    >
+      <ion-label id="noResults">No results Found </ion-label>
     </ion-list>
     <ion-list *ngIf="isSearching && isShortNameAvailable">
       <ion-buttons id="location" *ngFor="let room of roomListShortName">
-        <ion-button (click)="createPath(room)">
-          {{ room.roomNumber }}
+        <ion-button id="roomFound" (click)="createPath(room)">
+          <span class="ion-text-left">{{ room.roomNumber }}</span>
         </ion-button>
       </ion-buttons>
     </ion-list>
     <ion-list *ngIf="isSearching && isFullNameAvailable">
       <ion-buttons id="location" *ngFor="let room of roomListFullName">
-        <ion-button (click)="createPath(room)">
-          {{ room.roomNumber }}
+        <ion-button id="roomFound" (click)="createPath(room)">
+          <span class="ion-text-left">{{ room.roomNumber }}</span>
         </ion-button>
       </ion-buttons>
     </ion-list>
@@ -34,7 +53,13 @@
 
   <div #map id="map"></div>
 
-  <ion-modal id="modal" #modal trigger="create-path" [initialBreakpoint]="0.25" [breakpoints]="[0.25]">
+  <ion-modal
+    id="modal"
+    #modal
+    trigger="create-path"
+    [initialBreakpoint]="0.25"
+    [breakpoints]="[0.25]"
+  >
     <!-- <p>{{ this.distance }}</p> -->
   </ion-modal>
 </ion-content>
