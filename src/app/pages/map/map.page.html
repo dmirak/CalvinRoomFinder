@@ -17,15 +17,16 @@
       >About</ion-button
     >
   </ion-toolbar>
-  <ion-searchbar
-    *ngIf="!isRouting"
-    id="search"
-    type="search"
-    placeholder="Enter the room number"
-    [debounce]="1000"
-    (ionInput)="getItems($event)"
-  >
-  </ion-searchbar>
+  <ion-toolbar
+    ><ion-searchbar
+      *ngIf="!isRouting"
+      id="search"
+      type="search"
+      placeholder="Enter the room number"
+      [debounce]="1000"
+      (ionInput)="getItems($event)"
+    ></ion-searchbar
+  ></ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -38,6 +39,7 @@
     <ion-list *ngIf="isSearching && isShortNameAvailable">
       <ion-buttons id="location" *ngFor="let room of roomListShortName">
         <ion-button id="roomFound" (click)="createPath(room)">
+          <ion-icon slot="start" name="search-outline"></ion-icon>
           <span class="ion-text-left">{{ room.roomNumber }}</span>
         </ion-button>
       </ion-buttons>
@@ -45,6 +47,7 @@
     <ion-list *ngIf="isSearching && isFullNameAvailable">
       <ion-buttons id="location" *ngFor="let room of roomListFullName">
         <ion-button id="roomFound" (click)="createPath(room)">
+          <ion-icon slot="start" name="search-outline"></ion-icon>
           <span class="ion-text-left">{{ room.roomNumber }}</span>
         </ion-button>
       </ion-buttons>
