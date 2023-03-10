@@ -2711,4 +2711,1078 @@
     "longitude": -85.5832,
     "altitude": 2
   },
+  {
+    "roomNumber": "HH211",
+    "latitude": 42.92972,
+    "longitude": -85.58836,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "hg216",
+    "latitude": 42.92974,
+    "longitude": -85.58834,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "HH213",
+    "latitude": 42.92976,
+    "longitude": -85.58835,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "HH217",
+    "latitude": 42.92986,
+    "longitude": -85.58833,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "HH218",
+    "latitude": 42.92985,
+    "longitude": -85.58832,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "HH219",
+    "latitude": 42.9299,
+    "longitude": -85.58836,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "HH221",
+    "latitude": 42.92991,
+    "longitude": -85.58836,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "HH223",
+    "latitude": 42.92999,
+    "longitude": -85.58834,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "HH225",
+    "latitude": 42.93,
+    "longitude": -85.58833,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "HH226",
+    "latitude": 42.93001,
+    "longitude": -85.58825,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "HH227",
+    "latitude": 42.93001,
+    "longitude": -85.58824,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "HH229",
+    "latitude": 42.93001,
+    "longitude": -85.58817,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "HH232",
+    "latitude": 42.92998,
+    "longitude": -85.58811,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "HH231",
+    "latitude": 42.93,
+    "longitude": -85.58812,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "HH341",
+    "latitude": 42.93001,
+    "longitude": -85.58833,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH343",
+    "latitude": 42.93001,
+    "longitude": -85.58832,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH345",
+    "latitude": 42.93001,
+    "longitude": -85.58831,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH346",
+    "latitude": 42.93,
+    "longitude": -85.58829,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH347",
+    "latitude": 42.93,
+    "longitude": -85.58829,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH348",
+    "latitude": 42.93,
+    "longitude": -85.58828,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH349",
+    "latitude": 42.92999,
+    "longitude": -85.58812,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH351",
+    "latitude": 42.93001,
+    "longitude": -85.5881,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH354",
+    "latitude": 42.93,
+    "longitude": -85.58811,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH356",
+    "latitude": 42.93002,
+    "longitude": -85.58808,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH357",
+    "latitude": 42.93003,
+    "longitude": -85.58806,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH353",
+    "latitude": 42.93004,
+    "longitude": -85.58806,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH355",
+    "latitude": 42.93004,
+    "longitude": -85.58807,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH338",
+    "latitude": 42.93,
+    "longitude": -85.58833,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH339",
+    "latitude": 42.92999,
+    "longitude": -85.58835,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH337",
+    "latitude": 42.92996,
+    "longitude": -85.58837,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH336",
+    "latitude": 42.92991,
+    "longitude": -85.5884,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH335",
+    "latitude": 42.92988,
+    "longitude": -85.58838,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH336",
+    "latitude": 42.92986,
+    "longitude": -85.58837,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH334",
+    "latitude": 42.92982,
+    "longitude": -85.58833,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH333",
+    "latitude": 42.92979,
+    "longitude": -85.58839,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH331",
+    "latitude": 42.92977,
+    "longitude": -85.5884,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH323",
+    "latitude": 42.92961,
+    "longitude": -85.58823,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH321",
+    "latitude": 42.92962,
+    "longitude": -85.58822,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH320",
+    "latitude": 42.92961,
+    "longitude": -85.58809,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH316",
+    "latitude": 42.9296,
+    "longitude": -85.58808,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH317",
+    "latitude": 42.9296,
+    "longitude": -85.58804,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH315",
+    "latitude": 42.92963,
+    "longitude": -85.58798,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH314",
+    "latitude": 42.92962,
+    "longitude": -85.5878,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH304-310",
+    "latitude": 42.92963,
+    "longitude": -85.58781,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH303",
+    "latitude": 42.92963,
+    "longitude": -85.58779,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH302",
+    "latitude": 42.92962,
+    "longitude": -85.58777,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH301",
+    "latitude": 42.92962,
+    "longitude": -85.58775,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH300",
+    "latitude": 42.92962,
+    "longitude": -85.58774,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HH451",
+    "latitude": 42.92956,
+    "longitude": -85.58829,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH440",
+    "latitude": 42.92974,
+    "longitude": -85.58837,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH458",
+    "latitude": 42.92976,
+    "longitude": -85.58837,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH460",
+    "latitude": 42.92984,
+    "longitude": -85.58835,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH462",
+    "latitude": 42.9299,
+    "longitude": -85.58834,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH463",
+    "latitude": 42.92993,
+    "longitude": -85.58837,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH466",
+    "latitude": 42.92999,
+    "longitude": -85.58837,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH468",
+    "latitude": 42.93001,
+    "longitude": -85.58835,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH470",
+    "latitude": 42.93006,
+    "longitude": -85.58832,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH472",
+    "latitude": 42.93003,
+    "longitude": -85.58828,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH474",
+    "latitude": 42.93003,
+    "longitude": -85.58826,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH476",
+    "latitude": 42.93004,
+    "longitude": -85.5882,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH477",
+    "latitude": -85.58818,
+    "longitude": 42.93004,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH478",
+    "latitude": 42.93003,
+    "longitude": -85.58816,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH480",
+    "latitude": 42.93002,
+    "longitude": -85.58811,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH481",
+    "latitude": 42.93005,
+    "longitude": -85.58802,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH486",
+    "latitude": 42.93006,
+    "longitude": -85.58801,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH488",
+    "latitude": 42.93007,
+    "longitude": -85.588,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH490",
+    "latitude": 42.93005,
+    "longitude": -85.58799,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH492",
+    "latitude": 42.93,
+    "longitude": -85.58796,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH494",
+    "latitude": 42.93006,
+    "longitude": -85.58792,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH495",
+    "latitude": 42.93006,
+    "longitude": -85.58794,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH432",
+    "latitude": 42.9296,
+    "longitude": -85.58794,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH430",
+    "latitude": 42.92961,
+    "longitude": -85.58818,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH431",
+    "latitude": 42.92962,
+    "longitude": -85.58816,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH429",
+    "latitude": 42.9296,
+    "longitude": -85.58813,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH428",
+    "latitude": 42.92963,
+    "longitude": -85.58813,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH427",
+    "latitude": 42.9296,
+    "longitude": -85.58808,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH426",
+    "latitude": 42.92958,
+    "longitude": -85.58796,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH425",
+    "latitude": 42.92958,
+    "longitude": -85.58792,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH424",
+    "latitude": 42.92958,
+    "longitude": -85.5879,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH423",
+    "latitude": 42.92958,
+    "longitude": -85.58792,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH422",
+    "latitude": 42.92957,
+    "longitude": -85.58792,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH421",
+    "latitude": 42.92962,
+    "longitude": -85.58778,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH419",
+    "latitude": 42.92958,
+    "longitude": -85.58776,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH419",
+    "latitude": 42.92958,
+    "longitude": -85.58776,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HH418",
+    "latitude": 42.9296,
+    "longitude": -85.58775,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "SC110",
+    "latitude": 42.93032,
+    "longitude": -85.58939,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SC115",
+    "latitude": 42.93028,
+    "longitude": -85.5894,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SC117",
+    "latitude": 42.93015,
+    "longitude": -85.58939,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SC120",
+    "latitude": 42.93014,
+    "longitude": -85.58939,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SC130",
+    "latitude": 42.93014,
+    "longitude": -85.58938,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SC134",
+    "latitude": 42.93008,
+    "longitude": -85.58939,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SC136",
+    "latitude": 42.93001,
+    "longitude": -85.5894,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SC140",
+    "latitude": 42.93,
+    "longitude": -85.58941,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SC141",
+    "latitude": 42.93002,
+    "longitude": -85.5894,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SC144",
+    "latitude": 42.93,
+    "longitude": -85.58942,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SC145",
+    "latitude": 42.93001,
+    "longitude": -85.58941,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SC146",
+    "latitude": 42.92998,
+    "longitude": -85.5894,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SC150",
+    "latitude": 42.92988,
+    "longitude": -85.58941,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SC154",
+    "latitude": 42.92988,
+    "longitude": -85.5894,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SC155",
+    "latitude": 42.92988,
+    "longitude": -85.58942,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SC156",
+    "latitude": 42.92983,
+    "longitude": -85.58945,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SC169",
+    "latitude": 42.92978,
+    "longitude": -85.58945,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SC160",
+    "latitude": 42.92973,
+    "longitude": -85.58932,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SC166",
+    "latitude": 42.92974,
+    "longitude": -85.5893,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SC180",
+    "latitude": 42.92968,
+    "longitude": -85.58923,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SC200",
+    "latitude": 42.93033,
+    "longitude": -85.58931,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SC202",
+    "latitude": 42.93033,
+    "longitude": -85.58934,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SC203",
+    "latitude": 42.93037,
+    "longitude": -85.58936,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SC207",
+    "latitude": 42.93033,
+    "longitude": -85.58939,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SC209",
+    "latitude": 42.93025,
+    "longitude": -85.58944,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SC210",
+    "latitude": 42.93019,
+    "longitude": -85.58942,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SC211",
+    "latitude": 42.93017,
+    "longitude": -85.58943,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SC213",
+    "latitude": 42.93014,
+    "longitude": -85.58942,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SC215",
+    "latitude": 42.93013,
+    "longitude": -85.58942,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SC217",
+    "latitude": 42.93014,
+    "longitude": -85.58942,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SC219",
+    "latitude": 42.93013,
+    "longitude": -85.58943,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SC221",
+    "latitude": 42.9301,
+    "longitude": -85.58942,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SC223",
+    "latitude": 42.93009,
+    "longitude": -85.58942,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SC220",
+    "latitude": 42.93007,
+    "longitude": -85.58934,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SC222",
+    "latitude": 42.93007,
+    "longitude": -85.58933,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SC225",
+    "latitude": 42.93006,
+    "longitude": -85.58934,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SC227",
+    "latitude": 42.92999,
+    "longitude": -85.58943,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SC226",
+    "latitude": 42.93,
+    "longitude": -85.58942,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SC229",
+    "latitude": 42.92997,
+    "longitude": -85.58944,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SC231",
+    "latitude": 42.92997,
+    "longitude": -85.58946,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SC232",
+    "latitude": 42.92989,
+    "longitude": -85.58945,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SC235",
+    "latitude": 42.92988,
+    "longitude": -85.58944,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SC236",
+    "latitude": 42.92986,
+    "longitude": -85.58946,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SC237",
+    "latitude": 42.92983,
+    "longitude": -85.58946,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SC242",
+    "latitude": 42.92981,
+    "longitude": -85.58946,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SC280",
+    "latitude": 42.92978,
+    "longitude": -85.5893,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "CF110",
+    "latitude": 42.93015,
+    "longitude": -85.58328,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF111",
+    "latitude": 42.93036,
+    "longitude": -85.58601,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF100",
+    "latitude": 42.93047,
+    "longitude": -85.5859,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF117",
+    "latitude": 42.93044,
+    "longitude": -85.58585,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF119",
+    "latitude": 42.93042,
+    "longitude": -85.5857,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF121",
+    "latitude": 42.93047,
+    "longitude": -85.58568,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF125",
+    "latitude": 42.93051,
+    "longitude": -85.58566,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF129",
+    "latitude": 42.93053,
+    "longitude": -85.58564,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF133",
+    "latitude": 42.93059,
+    "longitude": -85.58571,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF139c",
+    "latitude": 42.93055,
+    "longitude": -85.58563,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF152",
+    "latitude": 42.9306,
+    "longitude": -85.58546,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF151",
+    "latitude": 42.93059,
+    "longitude": -85.58547,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF153",
+    "latitude": 42.93058,
+    "longitude": -85.58547,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF154",
+    "latitude": 42.93058,
+    "longitude": -85.58547,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF155",
+    "latitude": 42.93058,
+    "longitude": -85.58547,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF160",
+    "latitude": 42.93051,
+    "longitude": -85.58546,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF165",
+    "latitude": 42.93045,
+    "longitude": -85.58553,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF166",
+    "latitude": 42.93044,
+    "longitude": -85.58556,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF169",
+    "latitude": 42.93042,
+    "longitude": -85.58546,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF168",
+    "latitude": 42.93037,
+    "longitude": -85.58545,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF169",
+    "latitude": 42.93042,
+    "longitude": -85.58546,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF170",
+    "latitude": 42.93039,
+    "longitude": -85.58548,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF171",
+    "latitude": 42.93041,
+    "longitude": -85.58547,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF172",
+    "latitude": 42.9304,
+    "longitude": -85.58549,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF173",
+    "latitude": 42.9304,
+    "longitude": -85.58548,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF174",
+    "latitude": 42.93035,
+    "longitude": -85.58546,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF175",
+    "latitude": 42.93037,
+    "longitude": -85.58548,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF177",
+    "latitude": 42.93032,
+    "longitude": -85.58549,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF176",
+    "latitude": 42.9303,
+    "longitude": -85.58546,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF178",
+    "latitude": 42.93031,
+    "longitude": -85.58548,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF179",
+    "latitude": 42.93033,
+    "longitude": -85.58551,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "CF208",
+    "latitude": 42.93036,
+    "longitude": -85.58598,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "CF214-221",
+    "latitude": 42.93043,
+    "longitude": -85.58576,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "CF222",
+    "latitude": 42.93045,
+    "longitude": -85.58571,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "CF223",
+    "latitude": 42.93042,
+    "longitude": -85.58571,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "CF224",
+    "latitude": 42.93043,
+    "longitude": -85.58571,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "CF225",
+    "latitude": 42.93044,
+    "longitude": -85.58571,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "CF227",
+    "latitude": 42.93041,
+    "longitude": -85.58549,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "CF229",
+    "latitude": 42.93062,
+    "longitude": -85.58569,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "CF230",
+    "latitude": 42.93074,
+    "longitude": -85.58594,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "CF232",
+    "latitude": 42.93067,
+    "longitude": -85.5862,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "CF236_239",
+    "latitude": 42.93049,
+    "longitude": -85.58627,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "CF263",
+    "latitude": 42.93053,
+    "longitude": -85.58565,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "CF264",
+    "latitude": 42.93054,
+    "longitude": -85.58547,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "CF278",
+    "latitude": 42.93073,
+    "longitude": -85.58549,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "CF279",
+    "latitude": 42.93081,
+    "longitude": -85.58553,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "CF280",
+    "latitude": 42.93081,
+    "longitude": -85.58551,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "CF281",
+    "latitude": 42.93082,
+    "longitude": -85.58551,
+    "altitude": 2
+  }
 ]
