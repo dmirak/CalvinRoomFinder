@@ -1,5 +1,4 @@
-[
-  {
+[{
     "roomNumber": "NH048",
     "latitude": 42.9312848,
     "longitude": -85.5888066,
@@ -2718,7 +2717,7 @@
     "altitude": 1
   },
   {
-    "roomNumber": "hg216",
+    "roomNumber": "HH216",
     "latitude": 42.92974,
     "longitude": -85.58834,
     "altitude": 1
@@ -3500,7 +3499,7 @@
   {
     "roomNumber": "CF110",
     "latitude": 42.93015,
-    "longitude": -85.58328,
+    "longitude": -85.58600,
     "altitude": 1
   },
   {
@@ -3744,7 +3743,7 @@
     "altitude": 2
   },
   {
-    "roomNumber": "CF236_239",
+    "roomNumber": "CF236-239",
     "latitude": 42.93049,
     "longitude": -85.58627,
     "altitude": 2

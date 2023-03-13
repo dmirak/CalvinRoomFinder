@@ -2488,5 +2488,1301 @@
     "latitude": 42.93087,
     "longitude": -85.58958,
     "altitude": 3
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 05",
+    "latitude": 42.93015,
+    "longitude": -85.58328,
+    "altitude": 0
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 015",
+    "latitude": 42.93004,
+    "longitude": -85.58372,
+    "altitude": 0
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 020",
+    "latitude": 42.93007,
+    "longitude": -85.58371,
+    "altitude": 0
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 025",
+    "latitude": 42.93009,
+    "longitude": -85.58368,
+    "altitude": 0
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 030",
+    "latitude": 42.93011,
+    "longitude": -85.58359,
+    "altitude": 0
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 040",
+    "latitude": 42.93011,
+    "longitude": -85.58346,
+    "altitude": 0
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 045",
+    "latitude": 42.93012,
+    "longitude": -85.58342,
+    "altitude": 0
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 055",
+    "latitude": 42.93013,
+    "longitude": -85.58332,
+    "altitude": 0
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 065",
+    "latitude": 42.93014,
+    "longitude": -85.58329,
+    "altitude": 0
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 108",
+    "latitude": 42.93003,
+    "longitude": -85.58363,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 110",
+    "latitude": 42.93003,
+    "longitude": -85.58363,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 120",
+    "latitude": 42.93005,
+    "longitude": -85.58363,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 130",
+    "latitude": 42.93007,
+    "longitude": -85.5835,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 140",
+    "latitude": 42.93007,
+    "longitude": -85.58348,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 150",
+    "latitude": 42.93007,
+    "longitude": -85.58332,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 160",
+    "latitude": 42.93007,
+    "longitude": -85.58325,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 170",
+    "latitude": 42.93004,
+    "longitude": -85.58356,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 205",
+    "latitude": 42.93006,
+    "longitude": -85.58375,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 210",
+    "latitude": 42.93006,
+    "longitude": -85.58373,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 215",
+    "latitude": 42.93005,
+    "longitude": 42.93005,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 225",
+    "latitude": 42.93005,
+    "longitude": -85.58373,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 230",
+    "latitude": 42.93006,
+    "longitude": -85.58372,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 235",
+    "latitude": 42.93004,
+    "longitude": -85.58369,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 239",
+    "latitude": 42.93004,
+    "longitude": -85.58368,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 240",
+    "latitude": 42.93006,
+    "longitude": 42.93006,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 250",
+    "latitude": 42.93008,
+    "longitude": -85.58358,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 251",
+    "latitude": 42.9301,
+    "longitude": -85.58346,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 260",
+    "latitude": 42.93012,
+    "longitude": -85.58338,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 261",
+    "latitude": 42.93013,
+    "longitude": -85.58338,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 263",
+    "latitude": 42.93012,
+    "longitude": -85.58335,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 265",
+    "latitude": 42.93012,
+    "longitude": -85.58334,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 267",
+    "latitude": 42.93011,
+    "longitude": -85.58332,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 269",
+    "latitude": 42.93012,
+    "longitude": -85.5833,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 270",
+    "latitude": 42.93016,
+    "longitude": -85.58322,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 271",
+    "latitude": 42.93014,
+    "longitude": -85.58326,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 272",
+    "latitude": 42.93016,
+    "longitude": -85.58326,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "DEVOS COMMUNICATION 273",
+    "latitude": 42.93017,
+    "longitude": -85.5832,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 211",
+    "latitude": 42.92972,
+    "longitude": -85.58836,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 216",
+    "latitude": 42.92974,
+    "longitude": -85.58834,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 213",
+    "latitude": 42.92976,
+    "longitude": -85.58835,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 217",
+    "latitude": 42.92986,
+    "longitude": -85.58833,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 218",
+    "latitude": 42.92985,
+    "longitude": -85.58832,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 219",
+    "latitude": 42.9299,
+    "longitude": -85.58836,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 221",
+    "latitude": 42.92991,
+    "longitude": -85.58836,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 223",
+    "latitude": 42.92999,
+    "longitude": -85.58834,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 225",
+    "latitude": 42.93,
+    "longitude": -85.58833,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 226",
+    "latitude": 42.93001,
+    "longitude": -85.58825,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 227",
+    "latitude": 42.93001,
+    "longitude": -85.58824,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 229",
+    "latitude": 42.93001,
+    "longitude": -85.58817,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 232",
+    "latitude": 42.92998,
+    "longitude": -85.58811,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 231",
+    "latitude": 42.93,
+    "longitude": -85.58812,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 341",
+    "latitude": 42.93001,
+    "longitude": -85.58833,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 343",
+    "latitude": 42.93001,
+    "longitude": -85.58832,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 345",
+    "latitude": 42.93001,
+    "longitude": -85.58831,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 346",
+    "latitude": 42.93,
+    "longitude": -85.58829,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 347",
+    "latitude": 42.93,
+    "longitude": -85.58829,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 348",
+    "latitude": 42.93,
+    "longitude": -85.58828,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 349",
+    "latitude": 42.92999,
+    "longitude": -85.58812,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 351",
+    "latitude": 42.93001,
+    "longitude": -85.5881,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 354",
+    "latitude": 42.93,
+    "longitude": -85.58811,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 356",
+    "latitude": 42.93002,
+    "longitude": -85.58808,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 357",
+    "latitude": 42.93003,
+    "longitude": -85.58806,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 353",
+    "latitude": 42.93004,
+    "longitude": -85.58806,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 355",
+    "latitude": 42.93004,
+    "longitude": -85.58807,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 338",
+    "latitude": 42.93,
+    "longitude": -85.58833,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 339",
+    "latitude": 42.92999,
+    "longitude": -85.58835,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 337",
+    "latitude": 42.92996,
+    "longitude": -85.58837,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 336",
+    "latitude": 42.92991,
+    "longitude": -85.5884,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 335",
+    "latitude": 42.92988,
+    "longitude": -85.58838,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 336",
+    "latitude": 42.92986,
+    "longitude": -85.58837,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 334",
+    "latitude": 42.92982,
+    "longitude": -85.58833,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 333",
+    "latitude": 42.92979,
+    "longitude": -85.58839,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 331",
+    "latitude": 42.92977,
+    "longitude": -85.5884,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 323",
+    "latitude": 42.92961,
+    "longitude": -85.58823,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 321",
+    "latitude": 42.92962,
+    "longitude": -85.58822,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 320",
+    "latitude": 42.92961,
+    "longitude": -85.58809,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 316",
+    "latitude": 42.9296,
+    "longitude": -85.58808,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 317",
+    "latitude": 42.9296,
+    "longitude": -85.58804,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 315",
+    "latitude": 42.92963,
+    "longitude": -85.58798,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 314",
+    "latitude": 42.92962,
+    "longitude": -85.5878,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 304-310",
+    "latitude": 42.92963,
+    "longitude": -85.58781,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 303",
+    "latitude": 42.92963,
+    "longitude": -85.58779,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 302",
+    "latitude": 42.92962,
+    "longitude": -85.58777,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 301",
+    "latitude": 42.92962,
+    "longitude": -85.58775,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 300",
+    "latitude": 42.92962,
+    "longitude": -85.58774,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 451",
+    "latitude": 42.92956,
+    "longitude": -85.58829,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 440",
+    "latitude": 42.92974,
+    "longitude": -85.58837,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 458",
+    "latitude": 42.92976,
+    "longitude": -85.58837,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 460",
+    "latitude": 42.92984,
+    "longitude": -85.58835,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 462",
+    "latitude": 42.9299,
+    "longitude": -85.58834,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 463",
+    "latitude": 42.92993,
+    "longitude": -85.58837,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 466",
+    "latitude": 42.92999,
+    "longitude": -85.58837,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 468",
+    "latitude": 42.93001,
+    "longitude": -85.58835,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 470",
+    "latitude": 42.93006,
+    "longitude": -85.58832,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 472",
+    "latitude": 42.93003,
+    "longitude": -85.58828,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 474",
+    "latitude": 42.93003,
+    "longitude": -85.58826,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 476",
+    "latitude": 42.93004,
+    "longitude": -85.5882,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 477",
+    "latitude": -85.58818,
+    "longitude": 42.93004,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 478",
+    "latitude": 42.93003,
+    "longitude": -85.58816,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 480",
+    "latitude": 42.93002,
+    "longitude": -85.58811,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 481",
+    "latitude": 42.93005,
+    "longitude": -85.58802,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 486",
+    "latitude": 42.93006,
+    "longitude": -85.58801,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 488",
+    "latitude": 42.93007,
+    "longitude": -85.588,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 490",
+    "latitude": 42.93005,
+    "longitude": -85.58799,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 492",
+    "latitude": 42.93,
+    "longitude": -85.58796,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 494",
+    "latitude": 42.93006,
+    "longitude": -85.58792,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 495",
+    "latitude": 42.93006,
+    "longitude": -85.58794,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 432",
+    "latitude": 42.9296,
+    "longitude": -85.58794,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 430",
+    "latitude": 42.92961,
+    "longitude": -85.58818,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 431",
+    "latitude": 42.92962,
+    "longitude": -85.58816,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 429",
+    "latitude": 42.9296,
+    "longitude": -85.58813,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 428",
+    "latitude": 42.92963,
+    "longitude": -85.58813,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 427",
+    "latitude": 42.9296,
+    "longitude": -85.58808,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 426",
+    "latitude": 42.92958,
+    "longitude": -85.58796,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 425",
+    "latitude": 42.92958,
+    "longitude": -85.58792,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 424",
+    "latitude": 42.92958,
+    "longitude": -85.5879,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 423",
+    "latitude": 42.92958,
+    "longitude": -85.58792,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 422",
+    "latitude": 42.92957,
+    "longitude": -85.58792,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 421",
+    "latitude": 42.92962,
+    "longitude": -85.58778,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 419",
+    "latitude": 42.92958,
+    "longitude": -85.58776,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 419",
+    "latitude": 42.92958,
+    "longitude": -85.58776,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "HIEMENGA HALL 418",
+    "latitude": 42.9296,
+    "longitude": -85.58775,
+    "altitude": 3
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 110",
+    "latitude": 42.93032,
+    "longitude": -85.58939,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 115",
+    "latitude": 42.93028,
+    "longitude": -85.5894,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 117",
+    "latitude": 42.93015,
+    "longitude": -85.58939,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 120",
+    "latitude": 42.93014,
+    "longitude": -85.58939,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 130",
+    "latitude": 42.93014,
+    "longitude": -85.58938,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 134",
+    "latitude": 42.93008,
+    "longitude": -85.58939,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 136",
+    "latitude": 42.93001,
+    "longitude": -85.5894,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 140",
+    "latitude": 42.93,
+    "longitude": -85.58941,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 141",
+    "latitude": 42.93002,
+    "longitude": -85.5894,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 144",
+    "latitude": 42.93,
+    "longitude": -85.58942,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 145",
+    "latitude": 42.93001,
+    "longitude": -85.58941,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 146",
+    "latitude": 42.92998,
+    "longitude": -85.5894,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 150",
+    "latitude": 42.92988,
+    "longitude": -85.58941,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 154",
+    "latitude": 42.92988,
+    "longitude": -85.5894,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 155",
+    "latitude": 42.92988,
+    "longitude": -85.58942,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 156",
+    "latitude": 42.92983,
+    "longitude": -85.58945,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 169",
+    "latitude": 42.92978,
+    "longitude": -85.58945,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 160",
+    "latitude": 42.92973,
+    "longitude": -85.58932,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 166",
+    "latitude": 42.92974,
+    "longitude": -85.5893,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 180",
+    "latitude": 42.92968,
+    "longitude": -85.58923,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 200",
+    "latitude": 42.93033,
+    "longitude": -85.58931,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 202",
+    "latitude": 42.93033,
+    "longitude": -85.58934,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 203",
+    "latitude": 42.93037,
+    "longitude": -85.58936,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 207",
+    "latitude": 42.93033,
+    "longitude": -85.58939,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 209",
+    "latitude": 42.93025,
+    "longitude": -85.58944,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 210",
+    "latitude": 42.93019,
+    "longitude": -85.58942,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 211",
+    "latitude": 42.93017,
+    "longitude": -85.58943,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 213",
+    "latitude": 42.93014,
+    "longitude": -85.58942,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 215",
+    "latitude": 42.93013,
+    "longitude": -85.58942,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 217",
+    "latitude": 42.93014,
+    "longitude": -85.58942,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 219",
+    "latitude": 42.93013,
+    "longitude": -85.58943,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 221",
+    "latitude": 42.9301,
+    "longitude": -85.58942,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 223",
+    "latitude": 42.93009,
+    "longitude": -85.58942,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 220",
+    "latitude": 42.93007,
+    "longitude": -85.58934,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 222",
+    "latitude": 42.93007,
+    "longitude": -85.58933,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 225",
+    "latitude": 42.93006,
+    "longitude": -85.58934,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 227",
+    "latitude": 42.92999,
+    "longitude": -85.58943,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 226",
+    "latitude": 42.93,
+    "longitude": -85.58942,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 229",
+    "latitude": 42.92997,
+    "longitude": -85.58944,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 231",
+    "latitude": 42.92997,
+    "longitude": -85.58946,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 232",
+    "latitude": 42.92989,
+    "longitude": -85.58945,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 235",
+    "latitude": 42.92988,
+    "longitude": -85.58944,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 236",
+    "latitude": 42.92986,
+    "longitude": -85.58946,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 237",
+    "latitude": 42.92983,
+    "longitude": -85.58946,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 242",
+    "latitude": 42.92981,
+    "longitude": -85.58946,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "SPOELHOF CENTER 280",
+    "latitude": 42.92978,
+    "longitude": -85.5893,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 110",
+    "latitude": 42.93015,
+    "longitude": -85.58600,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 111",
+    "latitude": 42.93036,
+    "longitude": -85.58601,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 100",
+    "latitude": 42.93047,
+    "longitude": -85.5859,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 117",
+    "latitude": 42.93044,
+    "longitude": -85.58585,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 119",
+    "latitude": 42.93042,
+    "longitude": -85.5857,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 121",
+    "latitude": 42.93047,
+    "longitude": -85.58568,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 125",
+    "latitude": 42.93051,
+    "longitude": -85.58566,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 129",
+    "latitude": 42.93053,
+    "longitude": -85.58564,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 133",
+    "latitude": 42.93059,
+    "longitude": -85.58571,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 139c",
+    "latitude": 42.93055,
+    "longitude": -85.58563,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 152",
+    "latitude": 42.9306,
+    "longitude": -85.58546,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 151",
+    "latitude": 42.93059,
+    "longitude": -85.58547,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 153",
+    "latitude": 42.93058,
+    "longitude": -85.58547,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 154",
+    "latitude": 42.93058,
+    "longitude": -85.58547,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 155",
+    "latitude": 42.93058,
+    "longitude": -85.58547,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 160",
+    "latitude": 42.93051,
+    "longitude": -85.58546,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 165",
+    "latitude": 42.93045,
+    "longitude": -85.58553,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 166",
+    "latitude": 42.93044,
+    "longitude": -85.58556,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 169",
+    "latitude": 42.93042,
+    "longitude": -85.58546,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 168",
+    "latitude": 42.93037,
+    "longitude": -85.58545,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 169",
+    "latitude": 42.93042,
+    "longitude": -85.58546,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 170",
+    "latitude": 42.93039,
+    "longitude": -85.58548,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 171",
+    "latitude": 42.93041,
+    "longitude": -85.58547,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 172",
+    "latitude": 42.9304,
+    "longitude": -85.58549,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 173",
+    "latitude": 42.9304,
+    "longitude": -85.58548,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 174",
+    "latitude": 42.93035,
+    "longitude": -85.58546,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 175",
+    "latitude": 42.93037,
+    "longitude": -85.58548,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 177",
+    "latitude": 42.93032,
+    "longitude": -85.58549,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 176",
+    "latitude": 42.9303,
+    "longitude": -85.58546,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 178",
+    "latitude": 42.93031,
+    "longitude": -85.58548,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 179",
+    "latitude": 42.93033,
+    "longitude": -85.58551,
+    "altitude": 1
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 208",
+    "latitude": 42.93036,
+    "longitude": -85.58598,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 214-221",
+    "latitude": 42.93043,
+    "longitude": -85.58576,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 222",
+    "latitude": 42.93045,
+    "longitude": -85.58571,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 223",
+    "latitude": 42.93042,
+    "longitude": -85.58571,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 224",
+    "latitude": 42.93043,
+    "longitude": -85.58571,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 225",
+    "latitude": 42.93044,
+    "longitude": -85.58571,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 227",
+    "latitude": 42.93041,
+    "longitude": -85.58549,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 229",
+    "latitude": 42.93062,
+    "longitude": -85.58569,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 230",
+    "latitude": 42.93074,
+    "longitude": -85.58594,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 232",
+    "latitude": 42.93067,
+    "longitude": -85.5862,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 236-239",
+    "latitude": 42.93049,
+    "longitude": -85.58627,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 263",
+    "latitude": 42.93053,
+    "longitude": -85.58565,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 264",
+    "latitude": 42.93054,
+    "longitude": -85.58547,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 278",
+    "latitude": 42.93073,
+    "longitude": -85.58549,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 279",
+    "latitude": 42.93081,
+    "longitude": -85.58553,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 280",
+    "latitude": 42.93081,
+    "longitude": -85.58551,
+    "altitude": 2
+  },
+  {
+    "roomNumber": "COVENANT FINE ARTS CENTER 281",
+    "latitude": 42.93082,
+    "longitude": -85.58551,
+    "altitude": 2
   }
 ]
