@@ -1,6 +1,6 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 
 import { NavMenuComponent } from 'src/app/components/nav-menu/nav-menu.component';
 import { AboutComponent } from 'src/app/components/about/about.component';
@@ -20,7 +20,7 @@ interface LatLng {
   templateUrl: 'map.page.html',
   styleUrls: ['map.page.scss'],
 })
-export class MapPage implements OnInit {
+export class MapPage implements OnInit, OnDestroy {
   @ViewChild('map', { read: ElementRef, static: false }) mapRef: ElementRef;
 
   map: any;
@@ -52,6 +52,8 @@ export class MapPage implements OnInit {
   public roomListShortName: any = [];
   public roomListFullName: any = [];
 
+  private _subscription: Subscription;
+
   constructor(private modalCtrl: ModalController, private storageService: StorageService) {
     this.distanceSubject.next('');
     this.durationSubject.next('');
@@ -59,7 +61,187 @@ export class MapPage implements OnInit {
 
   async ngOnInit() {
     await this.storageService.init();
-    this.darkMode = await this.storageService.get('darkMode');
+
+    this._subscription = this.storageService.storage$.subscribe(async key => {
+      if (key === 'darkMode') {
+        this.darkMode = await this.storageService.get('darkMode');
+        if (this.map) {
+          if (this.darkMode === true) {
+            console.log(this.map);
+            this.map.setOptions({
+              styles: [
+                { elementType: 'geometry', stylers: [{ color: '#242f3e' }] },
+                { elementType: 'labels.text.stroke', stylers: [{ color: '#242f3e' }] },
+                { elementType: 'labels.text.fill', stylers: [{ color: '#746855' }] },
+                {
+                  featureType: 'administrative.locality',
+                  elementType: 'labels.text.fill',
+                  stylers: [{ color: '#d59563' }],
+                },
+                {
+                  featureType: 'poi',
+                  elementType: 'labels.text.fill',
+                  stylers: [{ color: '#d59563' }],
+                },
+                {
+                  featureType: 'poi.park',
+                  elementType: 'geometry',
+                  stylers: [{ color: '#263c3f' }],
+                },
+                {
+                  featureType: 'poi.park',
+                  elementType: 'labels.text.fill',
+                  stylers: [{ color: '#6b9a76' }],
+                },
+                {
+                  featureType: 'road',
+                  elementType: 'geometry',
+                  stylers: [{ color: '#38414e' }],
+                },
+                {
+                  featureType: 'road',
+                  elementType: 'geometry.stroke',
+                  stylers: [{ color: '#212a37' }],
+                },
+                {
+                  featureType: 'road',
+                  elementType: 'labels.text.fill',
+                  stylers: [{ color: '#9ca5b3' }],
+                },
+                {
+                  featureType: 'road.highway',
+                  elementType: 'geometry',
+                  stylers: [{ color: '#746855' }],
+                },
+                {
+                  featureType: 'road.highway',
+                  elementType: 'geometry.stroke',
+                  stylers: [{ color: '#1f2835' }],
+                },
+                {
+                  featureType: 'road.highway',
+                  elementType: 'labels.text.fill',
+                  stylers: [{ color: '#f3d19c' }],
+                },
+                {
+                  featureType: 'transit',
+                  elementType: 'geometry',
+                  stylers: [{ color: '#2f3948' }],
+                },
+                {
+                  featureType: 'transit.station',
+                  elementType: 'labels.text.fill',
+                  stylers: [{ color: '#d59563' }],
+                },
+                {
+                  featureType: 'water',
+                  elementType: 'geometry',
+                  stylers: [{ color: '#17263c' }],
+                },
+                {
+                  featureType: 'water',
+                  elementType: 'labels.text.fill',
+                  stylers: [{ color: '#515c6d' }],
+                },
+                {
+                  featureType: 'water',
+                  elementType: 'labels.text.stroke',
+                  stylers: [{ color: '#17263c' }],
+                },
+              ],
+            });
+          }
+          else {
+            this.map.setOptions({
+              styles: [
+                { elementType: 'geometry', stylers: [{ color: '#ffff' }] },
+                { elementType: 'labels.text.stroke', stylers: [{ color: '#242f3e' }] },
+                { elementType: 'labels.text.fill', stylers: [{ color: '#746855' }] },
+                {
+                  featureType: 'administrative.locality',
+                  elementType: 'labels.text.fill',
+                  stylers: [{ color: '#d59563' }],
+                },
+                {
+                  featureType: 'poi',
+                  elementType: 'labels.text.fill',
+                  stylers: [{ color: '#d59563' }],
+                },
+                {
+                  featureType: 'poi.park',
+                  elementType: 'geometry',
+                  stylers: [{ color: '#263c3f' }],
+                },
+                {
+                  featureType: 'poi.park',
+                  elementType: 'labels.text.fill',
+                  stylers: [{ color: '#6b9a76' }],
+                },
+                {
+                  featureType: 'road',
+                  elementType: 'geometry',
+                  stylers: [{ color: '#38414e' }],
+                },
+                {
+                  featureType: 'road',
+                  elementType: 'geometry.stroke',
+                  stylers: [{ color: '#212a37' }],
+                },
+                {
+                  featureType: 'road',
+                  elementType: 'labels.text.fill',
+                  stylers: [{ color: '#9ca5b3' }],
+                },
+                {
+                  featureType: 'road.highway',
+                  elementType: 'geometry',
+                  stylers: [{ color: '#746855' }],
+                },
+                {
+                  featureType: 'road.highway',
+                  elementType: 'geometry.stroke',
+                  stylers: [{ color: '#1f2835' }],
+                },
+                {
+                  featureType: 'road.highway',
+                  elementType: 'labels.text.fill',
+                  stylers: [{ color: '#f3d19c' }],
+                },
+                {
+                  featureType: 'transit',
+                  elementType: 'geometry',
+                  stylers: [{ color: '#2f3948' }],
+                },
+                {
+                  featureType: 'transit.station',
+                  elementType: 'labels.text.fill',
+                  stylers: [{ color: '#d59563' }],
+                },
+                {
+                  featureType: 'water',
+                  elementType: 'geometry',
+                  stylers: [{ color: '#17263c' }],
+                },
+                {
+                  featureType: 'water',
+                  elementType: 'labels.text.fill',
+                  stylers: [{ color: '#515c6d' }],
+                },
+                {
+                  featureType: 'water',
+                  elementType: 'labels.text.stroke',
+                  stylers: [{ color: '#17263c' }],
+                },
+              ],
+            });
+          }
+        }
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this._subscription.unsubscribe();
   }
 
   ionViewDidEnter() {
@@ -113,90 +295,6 @@ export class MapPage implements OnInit {
       disableDefaultUI: true,
     };
     this.map = await new google.maps.Map(this.mapRef.nativeElement, options);
-    if (this.darkMode) {
-      this.map.setOptions({
-        styles: [
-          { elementType: 'geometry', stylers: [{ color: '#242f3e' }] },
-          { elementType: 'labels.text.stroke', stylers: [{ color: '#242f3e' }] },
-          { elementType: 'labels.text.fill', stylers: [{ color: '#746855' }] },
-          {
-            featureType: 'administrative.locality',
-            elementType: 'labels.text.fill',
-            stylers: [{ color: '#d59563' }],
-          },
-          {
-            featureType: 'poi',
-            elementType: 'labels.text.fill',
-            stylers: [{ color: '#d59563' }],
-          },
-          {
-            featureType: 'poi.park',
-            elementType: 'geometry',
-            stylers: [{ color: '#263c3f' }],
-          },
-          {
-            featureType: 'poi.park',
-            elementType: 'labels.text.fill',
-            stylers: [{ color: '#6b9a76' }],
-          },
-          {
-            featureType: 'road',
-            elementType: 'geometry',
-            stylers: [{ color: '#38414e' }],
-          },
-          {
-            featureType: 'road',
-            elementType: 'geometry.stroke',
-            stylers: [{ color: '#212a37' }],
-          },
-          {
-            featureType: 'road',
-            elementType: 'labels.text.fill',
-            stylers: [{ color: '#9ca5b3' }],
-          },
-          {
-            featureType: 'road.highway',
-            elementType: 'geometry',
-            stylers: [{ color: '#746855' }],
-          },
-          {
-            featureType: 'road.highway',
-            elementType: 'geometry.stroke',
-            stylers: [{ color: '#1f2835' }],
-          },
-          {
-            featureType: 'road.highway',
-            elementType: 'labels.text.fill',
-            stylers: [{ color: '#f3d19c' }],
-          },
-          {
-            featureType: 'transit',
-            elementType: 'geometry',
-            stylers: [{ color: '#2f3948' }],
-          },
-          {
-            featureType: 'transit.station',
-            elementType: 'labels.text.fill',
-            stylers: [{ color: '#d59563' }],
-          },
-          {
-            featureType: 'water',
-            elementType: 'geometry',
-            stylers: [{ color: '#17263c' }],
-          },
-          {
-            featureType: 'water',
-            elementType: 'labels.text.fill',
-            stylers: [{ color: '#515c6d' }],
-          },
-          {
-            featureType: 'water',
-            elementType: 'labels.text.stroke',
-            stylers: [{ color: '#17263c' }],
-          },
-        ],
-      });
-    }
     this.setLocationCenter();
 
     navigator.geolocation.watchPosition((position) => {

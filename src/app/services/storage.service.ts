@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 import { Storage } from '@ionic/storage-angular';
 
@@ -7,6 +8,10 @@ import { Storage } from '@ionic/storage-angular';
 })
 export class StorageService {
   private _storage: Storage | null = null;
+  private storageSubject = new BehaviorSubject<any>('');
+
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  storage$ = this.storageSubject.asObservable();
 
   constructor(private storage: Storage) {
     this.init();
@@ -19,6 +24,7 @@ export class StorageService {
 
   public set(key: string, value: any) {
     this._storage?.set(key, value);
+    this.storageSubject.next(key);
   }
 
   public get(key: string) {
