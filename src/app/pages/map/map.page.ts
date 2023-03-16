@@ -44,7 +44,7 @@ export class MapPage implements OnInit {
   duration: string;
   durationSubject = new Subject<string>();
   noSearchResult: string[] = ['No results found'];
-  followMode = false;
+  isFollowMode = false;
 
   public dataShortName: any = [];
   public dataFullName: any = [];
@@ -203,6 +203,7 @@ export class MapPage implements OnInit {
   async createPath(room: any): Promise<void> {
     this.isSearching = false;
     this.isRouting = true;
+    this.followMode();
     this.createNavMenu();
 
     this.selectedRoom = { lat: room.latitude, lng: room.longitude };
@@ -220,7 +221,6 @@ export class MapPage implements OnInit {
       this.calcRoute(this.tempServices, this.tempRenderer);
       this.calcDistance();
       this.tempRenderer.setMap(this.map);
-      this.setLocationCenter();
     }, 1000);
   }
 
@@ -299,12 +299,22 @@ export class MapPage implements OnInit {
     aboutModal.present();
   }
 
+  followMode() {
+    this.isFollowMode = true;
+    this.followHandler();
+
+    const followIntervalID = setInterval(() => {
+      this.setLocationCenter();
+      if (!this.isFollowMode) {
+        clearInterval(followIntervalID);
+      }
+    }, 1000);
+  }
+
   followHandler() {
-    if (this.followMode) {
-      google.maps.event.addListener(this.map, 'drag', () => {
-        console.log('Dragging...');
-      });
-    }
+    google.maps.event.addListenerOnce(this.map, 'drag', () => {
+      this.isFollowMode = false;
+    });
   }
 
   setDarkMode() {

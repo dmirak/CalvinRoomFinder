@@ -4,6 +4,8 @@
     <ion-title slot="start" *ngIf="roomName">
       <div class="ion-text-wrap">Destination: {{ roomName }}</div>
     </ion-title>
+    <ion-button *ngIf="!isFollowMode" slot="end" fill="clear" (click)="followMode()"><ion-icon
+        name="navigate-outline"></ion-icon></ion-button>
     <ion-button *ngIf="!roomName" id="aboutButton" slot="end" fill="clear"
       (click)="createAboutModal()">About</ion-button>
   </ion-toolbar>
