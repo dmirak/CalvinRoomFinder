@@ -44,6 +44,7 @@ export class MapPage implements OnInit {
   duration: string;
   durationSubject = new Subject<string>();
   noSearchResult: string[] = ['No results found'];
+  followMode = false;
 
   public dataShortName: any = [];
   public dataFullName: any = [];
@@ -154,6 +155,8 @@ export class MapPage implements OnInit {
     if (await this.storageService.get('darkMode')) {
       this.setDarkMode();
     }
+
+    this.followHandler();
   }
 
   setLocationCenter() {
@@ -294,6 +297,14 @@ export class MapPage implements OnInit {
       component: AboutComponent,
     });
     aboutModal.present();
+  }
+
+  followHandler() {
+    if (this.followMode) {
+      google.maps.event.addListener(this.map, 'drag', () => {
+        console.log('Dragging...');
+      });
+    }
   }
 
   setDarkMode() {
