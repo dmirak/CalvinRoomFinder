@@ -44,6 +44,7 @@ export class MapPage implements OnInit {
   duration: string;
   durationSubject = new Subject<string>();
   noSearchResult: string[] = ['No results found'];
+  isFollowMode = false;
 
   public dataShortName: any = [];
   public dataFullName: any = [];
@@ -154,6 +155,8 @@ export class MapPage implements OnInit {
     if (await this.storageService.get('darkMode')) {
       this.setDarkMode();
     }
+
+    this.followHandler();
   }
 
   setLocationCenter() {
@@ -200,6 +203,7 @@ export class MapPage implements OnInit {
   async createPath(room: any): Promise<void> {
     this.isSearching = false;
     this.isRouting = true;
+    this.followMode();
     this.createNavMenu();
 
     this.selectedRoom = { lat: room.latitude, lng: room.longitude };
@@ -217,7 +221,6 @@ export class MapPage implements OnInit {
       this.calcRoute(this.tempServices, this.tempRenderer);
       this.calcDistance();
       this.tempRenderer.setMap(this.map);
-      this.setLocationCenter();
     }, 1000);
   }
 
@@ -278,6 +281,7 @@ export class MapPage implements OnInit {
       breakpoints: [0.25],
       backdropDismiss: false,
       handle: false,
+      backdropBreakpoint: 1,
     });
     navMenu.present();
 
@@ -294,6 +298,24 @@ export class MapPage implements OnInit {
       component: AboutComponent,
     });
     aboutModal.present();
+  }
+
+  followMode() {
+    this.isFollowMode = true;
+    this.followHandler();
+
+    const followIntervalID = setInterval(() => {
+      this.setLocationCenter();
+      if (!this.isFollowMode) {
+        clearInterval(followIntervalID);
+      }
+    }, 1000);
+  }
+
+  followHandler() {
+    google.maps.event.addListenerOnce(this.map, 'drag', () => {
+      this.isFollowMode = false;
+    });
   }
 
   setDarkMode() {
