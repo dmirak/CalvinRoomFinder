@@ -281,6 +281,7 @@ export class MapPage implements OnInit {
       breakpoints: [0.25],
       backdropDismiss: false,
       handle: false,
+      backdropBreakpoint: 1,
     });
     navMenu.present();
 
