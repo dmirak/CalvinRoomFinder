@@ -12,6 +12,7 @@ import { environment } from '../environments/environment';
 import { IonicStorageModule } from '@ionic/storage-angular';
 
 import { AboutComponent } from './components/about/about.component';
+import { SettingsPage } from './pages/settings/settings.page';
 
 @NgModule({
   declarations: [AppComponent, AboutComponent],
@@ -29,7 +30,10 @@ import { AboutComponent } from './components/about/about.component';
       registrationStrategy: 'registerWhenStable:30000',
     }),
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    SettingsPage,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

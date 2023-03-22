@@ -2,14 +2,10 @@
   <ion-toolbar>
     <ion-img
       slot="start"
-      *ngIf="!roomName"
+      class="logo"
       src="..\assets\icon\compass.png"
     ></ion-img>
-    <ion-title slot="start" *ngIf="roomName">
-      <div class="ion-text-wrap">Destination: {{ roomName }}</div></ion-title
-    >
     <ion-button
-      *ngIf="!roomName"
       id="aboutButton"
       slot="end"
       fill="clear"
