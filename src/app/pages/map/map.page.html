@@ -1,21 +1,42 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-img slot="start" *ngIf="!roomName" src="..\assets\icon\compass.png"></ion-img>
-    <ion-title slot="start" *ngIf="roomName">
-      <div class="ion-text-wrap">Destination: {{ roomName }}</div>
-    </ion-title>
-    <ion-button *ngIf="!isFollowMode" slot="end" fill="clear" (click)="followMode()"><ion-icon
-        name="navigate-outline"></ion-icon></ion-button>
-    <ion-button *ngIf="!roomName" id="aboutButton" slot="end" fill="clear"
-      (click)="createAboutModal()">About</ion-button>
+    <ion-img
+      slot="start"
+      class="logo"
+      src="..\assets\icon\compass.png"
+    ></ion-img>
+    <ion-button
+      *ngIf="!isFollowMode"
+      slot="end"
+      fill="clear"
+      (click)="followMode()"
+      ><ion-icon name="navigate-outline"></ion-icon
+    ></ion-button>
+    <ion-button
+      id="aboutButton"
+      slot="end"
+      fill="clear"
+      (click)="createAboutModal()"
+      >About</ion-button
+    >
   </ion-toolbar>
-  <ion-toolbar><ion-searchbar *ngIf="!isRouting" id="search" type="search" placeholder="Enter the room number"
-      [debounce]="1000" (ionInput)="getItems($event)"></ion-searchbar></ion-toolbar>
+  <ion-toolbar
+    ><ion-searchbar
+      *ngIf="!isRouting"
+      id="search"
+      type="search"
+      placeholder="Enter the room number"
+      [debounce]="1000"
+      (ionInput)="getItems($event)"
+    ></ion-searchbar
+  ></ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <div>
-    <ion-list *ngIf="isSearching && !isFullNameAvailable && !isShortNameAvailable">
+    <ion-list
+      *ngIf="isSearching && !isFullNameAvailable && !isShortNameAvailable"
+    >
       <ion-label id="noResults">No results Found </ion-label>
     </ion-list>
     <ion-list *ngIf="isSearching && isShortNameAvailable">
@@ -38,7 +59,12 @@
 
   <div #map id="map"></div>
 
-  <ion-modal id="modal" #modal trigger="create-path" [initialBreakpoint]="0.25" [breakpoints]="[0.25]">
-    <!-- <p>{{ this.distance }}</p> -->
+  <ion-modal
+    id="modal"
+    #modal
+    trigger="create-path"
+    [initialBreakpoint]="0.25"
+    [breakpoints]="[0.25]"
+  >
   </ion-modal>
 </ion-content>

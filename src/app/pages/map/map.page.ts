@@ -9,9 +9,11 @@ import { StorageService } from 'src/app/services/storage.service';
 
 declare const google: any;
 
-interface LatLng {
+interface RoomInfo {
+  number: string;
   lat: number;
   lng: number;
+  floor: string;
 }
 
 @Component({
@@ -23,7 +25,7 @@ export class MapPage implements OnInit {
   @ViewChild('map', { read: ElementRef, static: false }) mapRef: ElementRef;
 
   map: any;
-  userIcon = '../../../assets/user-icon.png';
+  userIcon: string;
   userMarker: any;
   userLocation = { lat: 0, lng: 0 };
   isSearching = false;
@@ -33,17 +35,22 @@ export class MapPage implements OnInit {
   heading: any;
   userDirection = 0;
   errorMsg: string;
-  selectedRoom: LatLng;
-  roomName: string;
+  selectedRoom: RoomInfo;
   tempServices: any;
   tempRenderer: any;
   isRouting = false;
   routeIntervalID: any;
+
   distance: string;
   distanceSubject = new Subject<string>();
   duration: string;
   durationSubject = new Subject<string>();
-  noSearchResult: string[] = ['No results found'];
+  destination: string;
+  destinationSubject = new Subject<string>();
+  floor: string;
+  floorSubject = new Subject<string>();
+
+  metricMode: boolean;
   isFollowMode = false;
 
   public dataShortName: any = [];
@@ -51,9 +58,14 @@ export class MapPage implements OnInit {
   public roomListShortName: any = [];
   public roomListFullName: any = [];
 
-  constructor(private modalCtrl: ModalController, private storageService: StorageService) {
+  constructor(
+    private modalCtrl: ModalController,
+    private storageService: StorageService
+  ) {
     this.distanceSubject.next('');
     this.durationSubject.next('');
+    this.destinationSubject.next('');
+    this.floorSubject.next('');
   }
 
   async ngOnInit() {
@@ -125,9 +137,9 @@ export class MapPage implements OnInit {
           icon: {
             fillColor: 'blue',
             fillOpacity: 1,
-            path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+            path: google.maps.SymbolPath[this.getUserIconMode()],
             rotation: this.heading,
-            scale: 7,
+            scale: 5,
             strokeColor: 'white',
             strokeWeight: 2,
           },
@@ -139,9 +151,9 @@ export class MapPage implements OnInit {
           icon: {
             fillColor: 'blue',
             fillOpacity: 1,
-            path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+            path: google.maps.SymbolPath[this.getUserIconMode()],
             rotation: this.heading,
-            scale: 7,
+            scale: 5,
             strokeColor: 'white',
             strokeWeight: 2,
           },
@@ -157,6 +169,19 @@ export class MapPage implements OnInit {
     }
 
     this.followHandler();
+  }
+
+  getUserIconMode(): string {
+    this.storageService.get('userIconMode').then((val) => {
+      this.userIcon = val;
+    });
+    if (this.userIcon === 'triangle') {
+      return 'FORWARD_CLOSED_ARROW';
+    } else if (this.userIcon === 'circle') {
+      return 'CIRCLE';
+    } else {
+      return 'CIRCLE';
+    }
   }
 
   setLocationCenter() {
@@ -206,8 +231,13 @@ export class MapPage implements OnInit {
     this.followMode();
     this.createNavMenu();
 
-    this.selectedRoom = { lat: room.latitude, lng: room.longitude };
-    this.roomName = room.roomNumber;
+    this.selectedRoom = {
+      number: room.roomNumber,
+      lat: room.latitude,
+      lng: room.longitude,
+      floor: room.altitude,
+    };
+
     const directionsService = new google.maps.DirectionsService();
     const directionsRenderer = new google.maps.DirectionsRenderer({
       suppressMarkers: true,
@@ -255,19 +285,34 @@ export class MapPage implements OnInit {
       lng: this.selectedRoom.lng,
     });
 
-    const request = {
+    const request = await {
       origins: [user],
       destinations: [destination],
       travelMode: google.maps.TravelMode.WALKING,
-      unitSystem: google.maps.UnitSystem.IMPERIAL,
+      unitSystem: google.maps.UnitSystem[this.getUnitMode()],
     };
 
     await service.getDistanceMatrix(request).then((response) => {
       this.distance = response.rows[0].elements[0].distance.text;
       this.duration = response.rows[0].elements[0].duration.text;
+      this.destination = this.selectedRoom.number;
+      this.floor = this.selectedRoom.floor;
       this.distanceSubject.next(this.distance);
       this.durationSubject.next(this.duration);
+      this.destinationSubject.next(this.destination);
+      this.floorSubject.next(this.floor);
     });
+  }
+
+  getUnitMode(): string {
+    this.storageService.get('metricMode').then((val) => {
+      this.metricMode = val;
+    });
+    if (this.metricMode) {
+      return 'METRIC';
+    } else {
+      return 'IMPERIAL';
+    }
   }
 
   async createNavMenu() {
@@ -276,9 +321,11 @@ export class MapPage implements OnInit {
       componentProps: {
         distanceSubject: this.distanceSubject,
         durationSubject: this.durationSubject,
+        destinationSubject: this.destinationSubject,
+        floorSubject: this.floorSubject,
       },
-      initialBreakpoint: 0.25,
-      breakpoints: [0.25],
+      initialBreakpoint: 0.3,
+      breakpoints: [0.3],
       backdropDismiss: false,
       handle: false,
       backdropBreakpoint: 1,
@@ -288,7 +335,7 @@ export class MapPage implements OnInit {
     navMenu.onDidDismiss().then((data) => {
       this.isRouting = false;
       this.tempRenderer.setMap(null);
-      this.roomName = null;
+      this.selectedRoom = null;
       clearInterval(this.routeIntervalID);
     });
   }
