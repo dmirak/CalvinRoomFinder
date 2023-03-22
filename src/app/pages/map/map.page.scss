@@ -39,7 +39,7 @@ ion-img {
   --background: black;
   --color: white;
   width: 100%;
-  --box-shadow: 0px 1px 0px 0px rgb(255,255,255,0.2);
+  --box-shadow: 0px 1px 0px 0px rgb(255, 255, 255, 0.2);
   padding: 1px;
 }
 
@@ -53,14 +53,6 @@ span.ion-text-left {
   margin-left: 1%;
 }
 
-// Hide scroll
-// ion-content{
-//   width: calc(100% + 15px);
-// }
-// ion-content::part(scroll) {
-//   padding-right: 15px;
-// }
-
 ion-toolbar {
   --background: #8C2131;
 }
@@ -69,4 +61,8 @@ ion-toolbar {
   display: block;
   height: 75px;
   width: 75px;
+}
+
+ion-icon {
+  color: white;
 }

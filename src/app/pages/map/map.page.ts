@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Subject } from 'rxjs';
 
@@ -21,17 +21,17 @@ interface RoomInfo {
   templateUrl: 'map.page.html',
   styleUrls: ['map.page.scss'],
 })
-export class MapPage {
+export class MapPage implements OnInit {
   @ViewChild('map', { read: ElementRef, static: false }) mapRef: ElementRef;
 
   map: any;
   userIcon: string;
   userMarker: any;
   userLocation = { lat: 0, lng: 0 };
-  isSearching: boolean = false;
-  isShortNameAvailable: boolean = false;
-  isFullNameAvailable: boolean = false;
-  markerCreated: boolean = false;
+  isSearching = false;
+  isShortNameAvailable = false;
+  isFullNameAvailable = false;
+  markerCreated = false;
   heading: any;
   userDirection = 0;
   errorMsg: string;
@@ -51,6 +51,7 @@ export class MapPage {
   floorSubject = new Subject<string>();
 
   metricMode: boolean;
+  isFollowMode = false;
 
   public dataShortName: any = [];
   public dataFullName: any = [];
@@ -65,6 +66,10 @@ export class MapPage {
     this.durationSubject.next('');
     this.destinationSubject.next('');
     this.floorSubject.next('');
+  }
+
+  async ngOnInit() {
+    await this.storageService.init();
   }
 
   ionViewDidEnter() {
@@ -158,6 +163,12 @@ export class MapPage {
 
       this.userMarker.setMap(this.map);
     });
+
+    if (await this.storageService.get('darkMode')) {
+      this.setDarkMode();
+    }
+
+    this.followHandler();
   }
 
   getUserIconMode(): string {
@@ -217,6 +228,8 @@ export class MapPage {
   async createPath(room: any): Promise<void> {
     this.isSearching = false;
     this.isRouting = true;
+    this.followMode();
+    this.createNavMenu();
 
     this.selectedRoom = {
       number: room.roomNumber,
@@ -225,7 +238,6 @@ export class MapPage {
       floor: room.altitude,
     };
 
-    // this.roomName = room.roomNumber;
     const directionsService = new google.maps.DirectionsService();
     const directionsRenderer = new google.maps.DirectionsRenderer({
       suppressMarkers: true,
@@ -235,13 +247,10 @@ export class MapPage {
     this.tempServices = directionsService;
     this.tempRenderer = directionsRenderer;
 
-    this.createNavMenu();
-
     this.routeIntervalID = setInterval(() => {
       this.calcRoute(this.tempServices, this.tempRenderer);
       this.calcDistance();
       this.tempRenderer.setMap(this.map);
-      this.setLocationCenter();
     }, 1000);
   }
 
@@ -319,6 +328,7 @@ export class MapPage {
       breakpoints: [0.3],
       backdropDismiss: false,
       handle: false,
+      backdropBreakpoint: 1,
     });
     navMenu.present();
 
@@ -335,5 +345,108 @@ export class MapPage {
       component: AboutComponent,
     });
     aboutModal.present();
+  }
+
+  followMode() {
+    this.isFollowMode = true;
+    this.followHandler();
+
+    const followIntervalID = setInterval(() => {
+      this.setLocationCenter();
+      if (!this.isFollowMode) {
+        clearInterval(followIntervalID);
+      }
+    }, 1000);
+  }
+
+  followHandler() {
+    google.maps.event.addListenerOnce(this.map, 'drag', () => {
+      this.isFollowMode = false;
+    });
+  }
+
+  setDarkMode() {
+    this.map.setOptions({
+      styles: [
+        { elementType: 'geometry', stylers: [{ color: '#242f3e' }] },
+        { elementType: 'labels.text.stroke', stylers: [{ color: '#242f3e' }] },
+        { elementType: 'labels.text.fill', stylers: [{ color: '#746855' }] },
+        {
+          featureType: 'administrative.locality',
+          elementType: 'labels.text.fill',
+          stylers: [{ color: '#d59563' }],
+        },
+        {
+          featureType: 'poi',
+          elementType: 'labels.text.fill',
+          stylers: [{ color: '#d59563' }],
+        },
+        {
+          featureType: 'poi.park',
+          elementType: 'geometry',
+          stylers: [{ color: '#263c3f' }],
+        },
+        {
+          featureType: 'poi.park',
+          elementType: 'labels.text.fill',
+          stylers: [{ color: '#6b9a76' }],
+        },
+        {
+          featureType: 'road',
+          elementType: 'geometry',
+          stylers: [{ color: '#38414e' }],
+        },
+        {
+          featureType: 'road',
+          elementType: 'geometry.stroke',
+          stylers: [{ color: '#212a37' }],
+        },
+        {
+          featureType: 'road',
+          elementType: 'labels.text.fill',
+          stylers: [{ color: '#9ca5b3' }],
+        },
+        {
+          featureType: 'road.highway',
+          elementType: 'geometry',
+          stylers: [{ color: '#746855' }],
+        },
+        {
+          featureType: 'road.highway',
+          elementType: 'geometry.stroke',
+          stylers: [{ color: '#1f2835' }],
+        },
+        {
+          featureType: 'road.highway',
+          elementType: 'labels.text.fill',
+          stylers: [{ color: '#f3d19c' }],
+        },
+        {
+          featureType: 'transit',
+          elementType: 'geometry',
+          stylers: [{ color: '#2f3948' }],
+        },
+        {
+          featureType: 'transit.station',
+          elementType: 'labels.text.fill',
+          stylers: [{ color: '#d59563' }],
+        },
+        {
+          featureType: 'water',
+          elementType: 'geometry',
+          stylers: [{ color: '#17263c' }],
+        },
+        {
+          featureType: 'water',
+          elementType: 'labels.text.fill',
+          stylers: [{ color: '#515c6d' }],
+        },
+        {
+          featureType: 'water',
+          elementType: 'labels.text.stroke',
+          stylers: [{ color: '#17263c' }],
+        },
+      ],
+    });
   }
 }

@@ -6,6 +6,13 @@
       src="..\assets\icon\compass.png"
     ></ion-img>
     <ion-button
+      *ngIf="!isFollowMode"
+      slot="end"
+      fill="clear"
+      (click)="followMode()"
+      ><ion-icon name="navigate-outline"></ion-icon
+    ></ion-button>
+    <ion-button
       id="aboutButton"
       slot="end"
       fill="clear"
@@ -59,6 +66,5 @@
     [initialBreakpoint]="0.25"
     [breakpoints]="[0.25]"
   >
-    <!-- <p>{{ this.distance }}</p> -->
   </ion-modal>
 </ion-content>
