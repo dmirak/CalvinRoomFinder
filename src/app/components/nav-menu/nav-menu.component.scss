@@ -2,8 +2,13 @@ ion-toolbar {
   --background: #8C2131;
 }
 
+ion-title {
+  --color: white;
+}
+
 ion-content {
   --background: black;
+  --color: white;
 }
 
 .logo {
