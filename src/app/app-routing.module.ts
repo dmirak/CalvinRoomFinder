@@ -3,13 +3,19 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'home',
+    loadChildren: () => import('./pages/map/map-routing.module').then( m => m.MapPageRoutingModule)
+  },
+  {
     path: '',
-    loadChildren: () => import('./components/tabs/tabs.module').then(m => m.TabsPageModule)
+    loadChildren: () => import('./pages/tutorial/tutorial.module').then(m => m.TutorialPageModule)
   },
   {
     path: 'settings',
     loadChildren: () => import('./pages/settings/settings.module').then(m => m.SettingsPageModule)
   }
+
+  //loadChildren: () => import('./components/tabs/tabs.module').then(m => m.TabsPageModule)
 ];
 @NgModule({
   imports: [

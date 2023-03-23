@@ -68,6 +68,8 @@ export class MapPage implements OnInit {
     this.floorSubject.next('');
   }
 
+
+  
   async ngOnInit() {
     await this.storageService.init();
   }

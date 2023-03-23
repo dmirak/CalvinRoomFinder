@@ -10,12 +10,13 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
 import { IonicStorageModule } from '@ionic/storage-angular';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AboutComponent } from './components/about/about.component';
 import { SettingsPage } from './pages/settings/settings.page';
 
 @NgModule({
   declarations: [AppComponent, AboutComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     BrowserModule,
     // MatCardModule,
