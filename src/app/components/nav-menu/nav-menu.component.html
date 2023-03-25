@@ -1,18 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-img
-      slot="start"
-      class="logo"
-      src="..\assets\icon\compass.png"
-    ></ion-img>
-    <ion-title> Nav Menu </ion-title>
+    <ion-img slot="start" class="logo" src="..\assets\icon\compass.png"></ion-img>
+    <ion-title> {{ destination }} floor {{ floor }} </ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="close()">Close</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
-  <p>Destination: {{ destination }} on floor: {{ floor }}</p>
-  <p>Distance: {{ distance }} to go</p>
-  <p>Time: {{ duration }} remaining</p>
+  <p>{{ distance }} to go</p>
+  <p>{{ duration }} remaining</p>
 </ion-content>
