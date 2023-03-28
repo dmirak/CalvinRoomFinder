@@ -13,14 +13,9 @@ const routes: Routes = [
           import('../../pages/map/map.module').then((m) => m.MapPageModule),
       },
       {
-        path: 'tab2',
+        path: 'schedule',
         loadChildren: () =>
-          import('../../pages/tab2/tab2.module').then((m) => m.Tab2PageModule),
-      },
-      {
-        path: 'tab3',
-        loadChildren: () =>
-          import('../../pages/tab3/tab3.module').then((m) => m.Tab3PageModule),
+          import('../../pages/schedule/schedule.module').then((m) => m.SchedulePageModule),
       },
       {
         path: 'settings',
@@ -46,4 +41,4 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }
