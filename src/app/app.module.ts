@@ -36,4 +36,4 @@ import { SettingsPage } from './pages/settings/settings.page';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

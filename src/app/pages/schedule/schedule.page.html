@@ -1,9 +1,86 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>schedule</ion-title>
+    <ion-title>Schedule</ion-title>
+    <ion-button id="open-create-edit" slot="end" fill="clear">
+      <ion-icon name="add-circle-outline"></ion-icon>
+      Add event
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-list *ngFor="let day of days | sortDays">
+    <!-- <ion-item-divider color="primary">
+      <ion-label>{{ day }}</ion-label>
+    </ion-item-divider> -->
+    <ion-list-header>{{ day.name }}</ion-list-header>
+    <ion-item-sliding *ngFor="let item of schedule | filterByDay: day">
+      <ion-item>
+        <ion-label class="ion-text-end">{{ item.time | date: 'h:mm a' }}</ion-label>
+        <ion-label>{{ item.title }}</ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="deleteItem(item.id, day)">Delete</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 
+  <ion-modal trigger="open-create-edit">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="closeCreateEdit()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-title>Create/edit</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="saveItem()">Save</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-label position="floating">Title</ion-label>
+          <ion-input [(ngModel)]="scheduleItem.title"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Repeating</ion-label>
+          <ion-toggle [(ngModel)]="scheduleItem.repeating"></ion-toggle>
+        </ion-item>
+        <ion-row>
+          <ion-col *ngFor="let day of dayEnumValues">
+            <ion-button [color]="this.scheduleItem.days.includes(day) ? 'primary' : 'medium'"
+              (click)="toggleDay(day)">{{ day }}</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-item>
+          <ion-label>Time</ion-label>
+          <ion-datetime [(ngModel)]="this.scheduleItem.time" presentation="time" displayFormat="h:mm A"></ion-datetime>
+        </ion-item>
+        <ion-searchbar id="search" type="search" placeholder="Enter destination" [debounce]="1000"
+          (ionInput)="getItems($event)" [value]="this.scheduleItem.location?.roomNumber">
+        </ion-searchbar>
+        <ion-list *ngIf="isSearching && !isFullNameAvailable && !isShortNameAvailable">
+          <ion-label id="noResults">No results Found </ion-label>
+        </ion-list>
+        <ion-list *ngIf="isSearching && isShortNameAvailable">
+          <ion-buttons id="location" *ngFor="let room of roomListShortName">
+            <ion-button id="roomFound" (click)="selectRoom(room)">
+              <ion-icon slot="start" name="search-outline"></ion-icon>
+              <span class="ion-text-left">{{ room.roomNumber }}</span>
+            </ion-button>
+          </ion-buttons>
+        </ion-list>
+        <ion-list *ngIf="isSearching && isFullNameAvailable">
+          <ion-buttons id="location" *ngFor="let room of roomListFullName">
+            <ion-button id="roomFound" (click)="selectRoom(room)">
+              <ion-icon slot="start" name="search-outline"></ion-icon>
+              <span class="ion-text-left">{{ room.roomNumber }}</span>
+            </ion-button>
+          </ion-buttons>
+        </ion-list>
+        <ion-button (click)="deleteItem()">Delete</ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>

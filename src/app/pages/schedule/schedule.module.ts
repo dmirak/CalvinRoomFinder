@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { SchedulePageRoutingModule } from './schedule-routing.module';
 
 import { SchedulePage } from './schedule.page';
+import { SortDaysPipe } from 'src/app/pipes/sort-days.pipe';
+import { FilterByDayPipe } from 'src/app/pipes/filter-by-day.pipe';
 
 @NgModule({
   imports: [
@@ -15,6 +17,6 @@ import { SchedulePage } from './schedule.page';
     IonicModule,
     SchedulePageRoutingModule,
   ],
-  declarations: [SchedulePage]
+  declarations: [SchedulePage, SortDaysPipe, FilterByDayPipe]
 })
 export class SchedulePageModule { }
