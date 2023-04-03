@@ -127,12 +127,25 @@ export class SchedulePage implements OnInit {
     };
   }
 
+  editEvent(item: ScheduleItem) {
+    if (item) {
+      this.scheduleItem = item;
+    }
+    this.createEditModal.present();
+  }
+
   saveItem() {
     this.createEditModal.dismiss();
     if (this.scheduleItem.id === '') {
       this.scheduleItem.id = window.crypto.getRandomValues(new Uint32Array(1))[0].toString(36);
     }
-    this.schedule.push(this.scheduleItem);
+    // this temp item is being made so that the schedule reference is updated
+    // without this Angular would not know to update the lists with new items
+    const newItem: ScheduleItem = this.scheduleItem;
+    if (this.scheduleItem.id !== '') {
+      this.schedule = this.schedule.filter(item => item.id !== this.scheduleItem.id);
+    }
+    this.schedule = this.schedule.concat(newItem);
     this.storageService.set('schedule', this.schedule);
     this.scheduleItem = {
       id: '',
@@ -154,7 +167,10 @@ export class SchedulePage implements OnInit {
 
   deleteItem(id?: string, day?: any) {
     if (id && day) {
-      this.schedule.find(i => i.id === id).days = this.schedule.find(i => i.id === id).days.filter(d => d !== day.name);
+      const tempItem: ScheduleItem = this.schedule.find(i => i.id === id);
+      tempItem.days = tempItem.days.filter(d => d !== day.name);
+      this.schedule = this.schedule.filter(item => item.id !== this.scheduleItem.id);
+      // this.schedule = this.schedule.concat(tempItem);
       this.storageService.set('schedule', this.schedule);
     }
     else {
@@ -172,5 +188,6 @@ export class SchedulePage implements OnInit {
         location: null
       };
     }
+    console.log(this.schedule);
   }
 }

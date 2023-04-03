@@ -15,7 +15,7 @@
     </ion-item-divider> -->
     <ion-list-header>{{ day.name }}</ion-list-header>
     <ion-item-sliding *ngFor="let item of schedule | filterByDay: day">
-      <ion-item>
+      <ion-item (click)="editEvent(item)">
         <ion-label class="ion-text-end">{{ item.time | date: 'h:mm a' }}</ion-label>
         <ion-label>{{ item.title }}</ion-label>
       </ion-item>
