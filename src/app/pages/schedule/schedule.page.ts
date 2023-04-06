@@ -47,16 +47,7 @@ export class SchedulePage implements OnInit {
       this.storageService.set('schedule', this.schedule);
     }
 
-    this.days.sort((a, b) => {
-      if (a.order === this.currentDay) {
-        return -1;
-      } else if (b.order === this.currentDay) {
-        return 1;
-      } else {
-        return a.order - b.order;
-      }
-    });
-
+    this.days = this.days.slice(this.currentDay).concat(this.days.slice(0, this.currentDay));
   }
 
   ionViewDidEnter() {
