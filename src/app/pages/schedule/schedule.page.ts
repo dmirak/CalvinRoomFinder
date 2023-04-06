@@ -181,4 +181,8 @@ export class SchedulePage implements OnInit {
     }
     console.log(this.schedule);
   }
+
+  firstLetter(day: string): string {
+    return day.charAt(0);
+  }
 }

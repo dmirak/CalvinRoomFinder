@@ -10,9 +10,6 @@
 
 <ion-content>
   <ion-list *ngFor="let day of days">
-    <!-- <ion-item-divider color="primary">
-      <ion-label>{{ day }}</ion-label>
-    </ion-item-divider> -->
     <ion-list-header>{{ day.name }}</ion-list-header>
     <ion-item-sliding *ngFor="let item of schedule | filterByDay: day">
       <ion-item (click)="editEvent(item)">
@@ -30,11 +27,11 @@
       <ion-header>
         <ion-toolbar>
           <ion-buttons slot="start">
-            <ion-button (click)="closeCreateEdit()">Cancel</ion-button>
+            <ion-button class="modal-save-close" (click)="closeCreateEdit()">Cancel</ion-button>
           </ion-buttons>
           <ion-title>Create/edit</ion-title>
           <ion-buttons slot="end">
-            <ion-button (click)="saveItem()">Save</ion-button>
+            <ion-button class="modal-save-close" (click)="saveItem()">Save</ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
@@ -49,8 +46,8 @@
         </ion-item>
         <ion-row>
           <ion-col *ngFor="let day of dayEnumValues">
-            <ion-button [color]="this.scheduleItem.days.includes(day) ? 'primary' : 'medium'"
-              (click)="toggleDay(day)">{{ day }}</ion-button>
+            <ion-button class="day-button" [color]="this.scheduleItem.days.includes(day) ? 'primary' : 'medium'"
+              (click)="toggleDay(day)">{{ firstLetter(day) }}</ion-button>
           </ion-col>
         </ion-row>
         <ion-item>
