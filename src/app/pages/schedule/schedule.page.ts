@@ -1,7 +1,14 @@
-import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { IonModal } from '@ionic/angular';
 import { StorageService } from 'src/app/services/storage.service';
 import { ScheduleItem, Day } from 'src/assets/data/ScheduleItem';
+
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 @Component({
   selector: 'app-schedule',
@@ -16,7 +23,7 @@ export class SchedulePage implements OnInit {
     title: '',
     days: [],
     time: new Date(),
-    repeating: false
+    repeating: false,
   };
   dayEnumValues: Day[] = Object.values(Day);
   isSearching = false;
@@ -37,7 +44,10 @@ export class SchedulePage implements OnInit {
   ];
   currentDay = new Date().getDay();
 
-  constructor(private storageService: StorageService) { }
+  constructor(
+    private storageService: StorageService,
+    private localNotification: LocalNotifications
+  ) {}
 
   async ngOnInit() {
     await this.storageService.init();
@@ -47,7 +57,14 @@ export class SchedulePage implements OnInit {
       this.storageService.set('schedule', this.schedule);
     }
 
-    this.days = this.days.slice(this.currentDay).concat(this.days.slice(0, this.currentDay));
+    this.days = this.days
+      .slice(this.currentDay)
+      .concat(this.days.slice(0, this.currentDay));
+
+    this.localNotification.schedule({
+      title: 'Testing',
+      text: 'success',
+    });
   }
 
   ionViewDidEnter() {
@@ -114,7 +131,7 @@ export class SchedulePage implements OnInit {
       days: [],
       time: new Date(),
       repeating: false,
-      location: null
+      location: null,
     };
   }
 
@@ -128,13 +145,17 @@ export class SchedulePage implements OnInit {
   saveItem() {
     this.createEditModal.dismiss();
     if (this.scheduleItem.id === '') {
-      this.scheduleItem.id = window.crypto.getRandomValues(new Uint32Array(1))[0].toString(36);
+      this.scheduleItem.id = window.crypto
+        .getRandomValues(new Uint32Array(1))[0]
+        .toString(36);
     }
     // this temp item is being made so that the schedule reference is updated
     // without this Angular would not know to update the lists with new items
     const newItem: ScheduleItem = this.scheduleItem;
     if (this.scheduleItem.id !== '') {
-      this.schedule = this.schedule.filter(item => item.id !== this.scheduleItem.id);
+      this.schedule = this.schedule.filter(
+        (item) => item.id !== this.scheduleItem.id
+      );
     }
     this.schedule = this.schedule.concat(newItem);
     this.storageService.set('schedule', this.schedule);
@@ -144,13 +165,13 @@ export class SchedulePage implements OnInit {
       days: [],
       time: new Date(),
       repeating: false,
-      location: null
+      location: null,
     };
   }
 
   toggleDay(day: Day) {
     if (this.scheduleItem.days.includes(day)) {
-      this.scheduleItem.days = this.scheduleItem.days.filter(d => d !== day);
+      this.scheduleItem.days = this.scheduleItem.days.filter((d) => d !== day);
     } else {
       this.scheduleItem.days.push(day);
     }
@@ -158,16 +179,19 @@ export class SchedulePage implements OnInit {
 
   deleteItem(id?: string, day?: any) {
     if (id && day) {
-      const tempItem: ScheduleItem = this.schedule.find(i => i.id === id);
-      tempItem.days = tempItem.days.filter(d => d !== day.name);
-      this.schedule = this.schedule.filter(item => item.id !== this.scheduleItem.id);
+      const tempItem: ScheduleItem = this.schedule.find((i) => i.id === id);
+      tempItem.days = tempItem.days.filter((d) => d !== day.name);
+      this.schedule = this.schedule.filter(
+        (item) => item.id !== this.scheduleItem.id
+      );
       // this.schedule = this.schedule.concat(tempItem);
       this.storageService.set('schedule', this.schedule);
-    }
-    else {
+    } else {
       this.createEditModal.dismiss();
       if (this.scheduleItem.id !== '') {
-        this.schedule = this.schedule.filter(item => item.id !== this.scheduleItem.id);
+        this.schedule = this.schedule.filter(
+          (item) => item.id !== this.scheduleItem.id
+        );
         this.storageService.set('schedule', this.schedule);
       }
       this.scheduleItem = {
@@ -176,7 +200,7 @@ export class SchedulePage implements OnInit {
         days: [],
         time: new Date(),
         repeating: false,
-        location: null
+        location: null,
       };
     }
     console.log(this.schedule);
