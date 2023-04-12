@@ -1452,6 +1452,20 @@
   resolved "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
+"@ionic-native/core@^5.1.0":
+  version "5.36.0"
+  resolved "https://registry.npmjs.org/@ionic-native/core/-/core-5.36.0.tgz"
+  integrity sha512-lOrkktadlKYbYf1LrDyAtsu1JnQ0oCCdkOU7iHQ8oXnNOkMwobFfD2m62F1CoOr0u9LIkpYnZSPjng8lZbmbNw==
+  dependencies:
+    "@types/cordova" latest
+
+"@ionic-native/splash-screen@^5.36.0":
+  version "5.36.0"
+  resolved "https://registry.npmjs.org/@ionic-native/splash-screen/-/splash-screen-5.36.0.tgz"
+  integrity sha512-BfNknY1rrGE8JRnCdKfL5wz8yFLhpPU5FRr8/LA3L+EncvPvcb9LGidePoeH3gVLMkolm2DI2a/rCelNrJ1Sxw==
+  dependencies:
+    "@types/cordova" latest
+
 "@ionic/angular-toolkit@^6.0.0":
   version "6.1.0"
   resolved "https://registry.npmjs.org/@ionic/angular-toolkit/-/angular-toolkit-6.1.0.tgz"
@@ -3825,6 +3839,11 @@ cordova-plugin-geolocation@^4.1.0:
   version "4.1.0"
   resolved "https://registry.npmjs.org/cordova-plugin-geolocation/-/cordova-plugin-geolocation-4.1.0.tgz"
   integrity sha512-y5io/P10xGMxSn2KEqfv/fExK47eA1pmSonJdmDqDsaSADV9JpgdPx0mUSA08+5pzma/OS9R0LoODeDPx7Jvjg==
+
+cordova-plugin-splashscreen@^6.0.2:
+  version "6.0.2"
+  resolved "https://registry.npmjs.org/cordova-plugin-splashscreen/-/cordova-plugin-splashscreen-6.0.2.tgz"
+  integrity sha512-7JiUfnInir+SCOEgTJ+5/cHF3UFl69jp6cAQfHtJaaQt9Pli8D8yTJjU0HGlJCvryvsVs4Xlc7/sEJM7vLJgvg==
 
 core-js-compat@^3.25.1:
   version "3.26.1"
@@ -9249,7 +9268,7 @@ rxjs-for-await@0.0.2:
   resolved "https://registry.npmjs.org/rxjs-for-await/-/rxjs-for-await-0.0.2.tgz"
   integrity sha512-IJ8R/ZCFMHOcDIqoABs82jal00VrZx8Xkgfe7TOKoaRPAW5nH/VFlG23bXpeGdrmtqI9UobFPgUKgCuFc7Lncw==
 
-rxjs@*, "rxjs@^5.5.0 || ^6.5.0 || ^7.3.0", rxjs@^6.0.0, "rxjs@^6.5.3 || ^7.4.0", rxjs@^6.5.4, rxjs@>=6.6.0, rxjs@~6.6.0, rxjs@6.6.7:
+rxjs@*, "rxjs@^5.5.0 || ^6.5.0", "rxjs@^5.5.0 || ^6.5.0 || ^7.3.0", rxjs@^6.0.0, "rxjs@^6.5.3 || ^7.4.0", rxjs@^6.5.4, rxjs@>=6.6.0, rxjs@~6.6.0, rxjs@6.6.7:
   version "6.6.7"
   resolved "https://registry.npmjs.org/rxjs/-/rxjs-6.6.7.tgz"
   integrity sha512-hTdwr+7yYNIT5n4AMYp85KA6yw2Va0FLa3Rguvbpa4W3I5xynaBZo41cM3XM+4Q6fRMj3sBYIR1VAmZMXYJvRQ==

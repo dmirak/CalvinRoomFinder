@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
@@ -34,6 +35,7 @@ import { SettingsPage } from './pages/settings/settings.page';
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     SettingsPage,
+    SplashScreen
   ],
   bootstrap: [AppComponent],
 })
