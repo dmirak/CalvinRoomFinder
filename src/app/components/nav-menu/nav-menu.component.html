@@ -5,7 +5,9 @@
       class="logo"
       src="..\assets\icon\compass.png"
     ></ion-img>
-    <ion-title> {{ destination }} floor {{ floor }} </ion-title>
+    <ion-title>
+      <div class="ion-text-wrap">{{ destination }} floor {{ floor }}</div>
+    </ion-title>
     <ion-buttons slot="end">
       <ion-button id="close" (click)="close()">Close</ion-button>
     </ion-buttons>
