@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./pages/map/map.module').then(m => m.MapPageModule)
+    loadChildren: () => import('./components/tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
     path: '',
