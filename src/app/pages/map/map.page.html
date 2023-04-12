@@ -6,12 +6,14 @@
       src="..\assets\icon\compass.png"
     ></ion-img>
     <ion-button
+      id="recenter"
       *ngIf="!isFollowMode"
       slot="end"
       fill="clear"
       (click)="followMode()"
-      ><ion-icon name="navigate-outline"></ion-icon
-    ></ion-button>
+      ><ion-icon slot="start" name="navigate-outline"> </ion-icon>
+      <label>Follow Mode</label>
+    </ion-button>
     <ion-button
       id="aboutButton"
       slot="end"

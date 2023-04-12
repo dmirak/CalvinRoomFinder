@@ -10,6 +10,7 @@ import { StorageService } from 'src/app/services/storage.service';
 declare const google: any;
 
 interface RoomInfo {
+  // eslint-disable-next-line id-blacklist
   number: string;
   lat: number;
   lng: number;
@@ -90,6 +91,7 @@ export class MapPage implements OnInit {
     this.showMap();
   }
 
+  // initializes and displays map
   async showMap() {
     window.navigator.geolocation.watchPosition(
       (position) => {
@@ -171,6 +173,7 @@ export class MapPage implements OnInit {
     this.followHandler();
   }
 
+  // queries storage for user icon if one is chosen
   getUserIconMode(): string {
     this.storageService.get('userIconMode').then((val) => {
       this.userIcon = val;
@@ -184,6 +187,7 @@ export class MapPage implements OnInit {
     }
   }
 
+  // centers map camera on user's current location
   setLocationCenter() {
     navigator.geolocation.getCurrentPosition(
       (position: GeolocationPosition) => {
@@ -196,6 +200,7 @@ export class MapPage implements OnInit {
     );
   }
 
+  // gets list of room numbers when searchbar is opened
   async getItems(ev: any) {
     // set val to the value of the searchbar
     const val = ev.target.value.toUpperCase();
@@ -225,6 +230,7 @@ export class MapPage implements OnInit {
     }
   }
 
+  // opens nav menu and begins routing interval
   async createPath(room: any): Promise<void> {
     this.isSearching = false;
     this.isRouting = true;
@@ -232,6 +238,7 @@ export class MapPage implements OnInit {
     this.createNavMenu();
 
     this.selectedRoom = {
+      // eslint-disable-next-line id-blacklist
       number: room.roomNumber,
       lat: room.latitude,
       lng: room.longitude,
@@ -254,6 +261,7 @@ export class MapPage implements OnInit {
     }, 1000);
   }
 
+  // calculates shortest walking path on map
   calcRoute(directionsService, directionsRenderer) {
     directionsService
       .route({
@@ -274,6 +282,7 @@ export class MapPage implements OnInit {
       });
   }
 
+  // calculates distance and time to destination
   async calcDistance() {
     const service = new google.maps.DistanceMatrixService();
     const user = new google.maps.Marker({
@@ -304,6 +313,7 @@ export class MapPage implements OnInit {
     });
   }
 
+  // queries storage for units set by user
   getUnitMode(): string {
     this.storageService.get('metricMode').then((val) => {
       this.metricMode = val;
@@ -315,6 +325,7 @@ export class MapPage implements OnInit {
     }
   }
 
+  // presents navMenu modal component
   async createNavMenu() {
     const navMenu = await this.modalCtrl.create({
       component: NavMenuComponent,
@@ -324,8 +335,8 @@ export class MapPage implements OnInit {
         destinationSubject: this.destinationSubject,
         floorSubject: this.floorSubject,
       },
-      initialBreakpoint: 0.3,
-      breakpoints: [0.3],
+      initialBreakpoint: 0.25,
+      breakpoints: [0.25],
       backdropDismiss: false,
       handle: false,
       backdropBreakpoint: 1,
@@ -340,6 +351,7 @@ export class MapPage implements OnInit {
     });
   }
 
+  // presents about modal
   async createAboutModal() {
     const aboutModal = await this.modalCtrl.create({
       component: AboutComponent,
@@ -347,6 +359,7 @@ export class MapPage implements OnInit {
     aboutModal.present();
   }
 
+  // when in follow mode map camera will follow user's movements
   followMode() {
     this.isFollowMode = true;
     this.followHandler();
@@ -359,12 +372,14 @@ export class MapPage implements OnInit {
     }, 1000);
   }
 
+  // detecting touch inputs to leave follow mode
   followHandler() {
     google.maps.event.addListenerOnce(this.map, 'drag', () => {
       this.isFollowMode = false;
     });
   }
 
+  // dark mode map styling
   setDarkMode() {
     this.map.setOptions({
       styles: [
