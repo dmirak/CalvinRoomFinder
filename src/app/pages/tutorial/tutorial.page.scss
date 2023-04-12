@@ -1,0 +1,23 @@
+p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.scontainer{
+    width: 100%;
+    length: 100;
+}
+
+
+.button1 {
+    background-color: rgb(161, 36, 32); 
+    color: black; 
+    border: 2px solid rgb(161, 36, 32);
+  }
+  
+  .button1:hover {
+    background-color: #ffffff;
+    color: white;
+  }
