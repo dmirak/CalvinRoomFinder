@@ -1,0 +1,39 @@
+ion-slides {
+  height: 100%;
+  --bullet-background: white;
+  --bullet-background-active: rgb(247, 247, 244);
+ }
+
+p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.scontainer{
+    width: 100%;
+    length: 100;
+}
+
+.image{
+  position: absolute;
+}
+
+.buttonwrap{
+  position:absolute;
+}
+.button1 {
+    background-color: rgb(161, 36, 32); 
+    color: black; 
+    border: 2px solid rgb(161, 36, 32);
+  }
+  
+.button1:hover {
+    background-color: #ffffff;
+    color: white;
+  }
+
+.slider-pager-page {
+    color: white !important;
+  } 
