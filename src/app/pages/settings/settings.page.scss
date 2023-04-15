@@ -2,8 +2,28 @@ ion-toolbar {
   --background: #8C2131;
 }
 
-ion-content {
+.dark {
   --background: black;
+  --color: white;
+  --border-color: white;
+}
+
+.light {
+  --background: white;
+  --color: black;
+  --border-color: black;
+}
+
+.transparentList {
+  background: transparent
+}
+
+ion-toggle::part(track) {
+  background: darkgray;
+}
+
+ion-toggle.toggle-checked::part(track) {
+  background: red;
 }
 
 .logo {

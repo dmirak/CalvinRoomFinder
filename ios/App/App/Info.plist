@@ -26,6 +26,21 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundleAlternateIcons</key>
+			<dict>
+				<key>icon</key>
+					<dict>
+						<key>UIPrerenderedIcon</key>
+						<true/>
+						<key>CFBundleIconFiles</key>
+						<array>
+							<string>icon</sting>
+						</array>
+					</dict>
+			</dict>
+	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
