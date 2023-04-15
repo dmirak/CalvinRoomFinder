@@ -1306,6 +1306,11 @@
   resolved "https://registry.npmjs.org/@capacitor/keyboard/-/keyboard-4.0.1.tgz"
   integrity sha512-JZVci2v9jAKH0sIoNNZzmw/cWGXWf+KneLt0yDr/6YSs/2/tfuH10yOrUOhgrKFkR+fFj/rddTClQXUQ8Rqcrg==
 
+"@capacitor/splash-screen@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.npmjs.org/@capacitor/splash-screen/-/splash-screen-4.2.0.tgz"
+  integrity sha512-XtGqM7J/yVEl/tKksKa7l1B6IDzhq4JJkadRuT8ohf/N7fD/1z45+id/4twM2Vnsxazh1fur2gq8rma7HaXMEw==
+
 "@capacitor/status-bar@4.0.1":
   version "4.0.1"
   resolved "https://registry.npmjs.org/@capacitor/status-bar/-/status-bar-4.0.1.tgz"

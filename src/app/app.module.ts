@@ -18,8 +18,6 @@ import { SettingsPage } from './pages/settings/settings.page';
   declarations: [AppComponent, AboutComponent],
   imports: [
     BrowserModule,
-    // MatCardModule,
-    // MatDialogModule,
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
     AppRoutingModule,

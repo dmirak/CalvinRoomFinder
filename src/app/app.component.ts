@@ -10,8 +10,7 @@ import { Platform } from '@ionic/angular';
 export class AppComponent {
   constructor(private swUpdate: SwUpdate, private platform: Platform) {
     this.checkForUpdates();
-    platform.ready().then(async () => {
-    });
+    platform.ready().then(async () => {});
   }
 
   async checkForUpdates(): Promise<void> {
