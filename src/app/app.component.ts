@@ -20,13 +20,6 @@ export class AppComponent {
     });
   }
 
-  private hideSplashScreen() {
-    timer(3000).subscribe(() => {
-      this.splashScreen.hide();
-    });
-
-  }
-  
   async checkForUpdates(): Promise<void> {
     if (await this.swUpdate.checkForUpdate()) {
       if (confirm('A new version is available. Update app?')) {
@@ -40,4 +33,12 @@ export class AppComponent {
       }
     }
   }
+
+  private hideSplashScreen() {
+    timer(3000).subscribe(() => {
+      this.splashScreen.hide();
+    });
+
+  }
+
 }

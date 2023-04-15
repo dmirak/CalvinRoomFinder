@@ -15,9 +15,7 @@ import { TutorialPage } from './tutorial.page';
     FormsModule,
     IonicModule,
     TutorialPageRoutingModule,
-
-
   ],
   declarations: [TutorialPage]
 })
-export class TutorialPageModule {}
+export class TutorialPageModule { }

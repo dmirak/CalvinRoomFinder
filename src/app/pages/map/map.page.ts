@@ -6,6 +6,7 @@ import { NavMenuComponent } from 'src/app/components/nav-menu/nav-menu.component
 import { AboutComponent } from 'src/app/components/about/about.component';
 
 import { StorageService } from 'src/app/services/storage.service';
+import { Router } from '@angular/router';
 
 declare const google: any;
 
@@ -61,7 +62,8 @@ export class MapPage implements OnInit {
 
   constructor(
     private modalCtrl: ModalController,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private route: Router
   ) {
     this.distanceSubject.next('');
     this.durationSubject.next('');
@@ -71,6 +73,12 @@ export class MapPage implements OnInit {
 
   async ngOnInit() {
     await this.storageService.init();
+    const visitedTutorial = await this.storageService.get('visitedTutorial');
+    if (visitedTutorial === undefined || !visitedTutorial) {
+      console.log('showing tutorial');
+      this.storageService.set('visitedTutorial', true);
+      this.route.navigate(['/tutorial']);
+    }
   }
 
   ionViewDidEnter() {
