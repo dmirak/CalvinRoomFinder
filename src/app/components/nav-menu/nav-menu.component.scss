@@ -6,7 +6,16 @@ ion-title {
   --color: white;
 }
 
-ion-content {
+#close {
+  --color: white;
+}
+
+.light {
+  --background: white;
+  --color: black;
+}
+
+.dark {
   --background: black;
   --color: white;
 }

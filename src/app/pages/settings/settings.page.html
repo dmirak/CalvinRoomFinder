@@ -1,25 +1,39 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-img class="logo" slot="start" src="..\assets\icon\compass.png"></ion-img>
+    <ion-img
+      class="logo"
+      slot="start"
+      src="..\assets\icon\compass.png"
+    ></ion-img>
     <ion-title>Settings</ion-title>
   </ion-toolbar>
 </ion-header>
+
 <!--theme, units: metric/imperial, navigation: sound/vibration/off (skip this),
     map rotation: toggle, accessability: toggle, change user icon-->
-<ion-content>
-  <ion-list>
-    <ion-item id="dark-mode">
+<ion-content class="dark" *ngIf="darkMode">
+  <ion-list class="transparentList" lines="full">
+    <ion-item class="dark" id="dark-mode">
       <ion-label>Dark mode</ion-label>
-      <ion-toggle name="dark-mode-toggle" [(ngModel)]="darkMode" [enableOnOffLabels]="true"
-        (ionChange)="darkModeChanged()">
+      <ion-toggle
+        name="dark-mode-toggle"
+        [(ngModel)]="darkMode"
+        [enableOnOffLabels]="true"
+        (ionChange)="darkModeChanged()"
+      >
       </ion-toggle>
     </ion-item>
-    <ion-item id="unit-mode">
-      <ion-label>Metric Units
+    <ion-item class="dark" id="unit-mode">
+      <ion-label
+        >Metric Units
         <h6>Default: imperial units</h6>
       </ion-label>
-      <ion-toggle name="unit-mode-toggle" [(ngModel)]="metricMode" [enableOnOffLabels]="true"
-        (ionChange)="metricModeChanged()"></ion-toggle>
+      <ion-toggle
+        name="unit-mode-toggle"
+        [(ngModel)]="metricMode"
+        [enableOnOffLabels]="true"
+        (ionChange)="metricModeChanged()"
+      ></ion-toggle>
     </ion-item>
     <!-- <ion-item id="map-rotation">
       <ion-label>Rotate map</ion-label>
@@ -42,9 +56,77 @@
       >
       </ion-toggle>
     </ion-item> -->
-    <ion-item id="icon-select">
+    <ion-item class="dark" id="icon-select">
       <ion-label>User Icon</ion-label>
-      <ion-select value="{{this.userIconMode}}" (ionChange)="userIconChanged($event)">
+      <ion-select
+        value="{{this.userIconMode}}"
+        (ionChange)="userIconChanged($event)"
+      >
+        <ion-select-option value="triangle">
+          <ion-label> Arrow </ion-label>
+        </ion-select-option>
+        <ion-select-option value="circle">
+          <ion-label> Circle </ion-label>
+          <ion-icon name="ellipse-outline" slot="end"></ion-icon>
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<!-- change the content color to white when not in dark mode-->
+<ion-content class="light" *ngIf="!darkMode">
+  <ion-list class="transparentList" lines="full">
+    <ion-item class="light" id="dark-mode">
+      <ion-label>Dark mode</ion-label>
+      <ion-toggle
+        background=""
+        name="dark-mode-toggle"
+        [(ngModel)]="darkMode"
+        [enableOnOffLabels]="true"
+        (ionChange)="darkModeChanged()"
+      >
+      </ion-toggle>
+    </ion-item>
+    <ion-item class="light" id="unit-mode">
+      <ion-label
+        >Metric Units
+        <h6>Default: imperial units</h6>
+      </ion-label>
+      <ion-toggle
+        name="unit-mode-toggle"
+        [(ngModel)]="metricMode"
+        [enableOnOffLabels]="true"
+        (ionChange)="metricModeChanged()"
+      ></ion-toggle>
+    </ion-item>
+    <!-- <ion-item id="map-rotation">
+      <ion-label>Rotate map</ion-label>
+      <ion-toggle
+        name="map-rotation-toggle"
+        [(ngModel)]="rotateMap"
+        [enableOnOffLabels]="true"
+        [checked]="true"
+        (ionChange)="rotateMapChanged()"
+      >
+      </ion-toggle>
+    </ion-item> -->
+    <!-- <ion-item id="accessibility-mode">
+      <ion-label>Accessibility mode</ion-label>
+      <ion-toggle
+        name="accessibility-mode-toggle"
+        [(ngModel)]="accessibilityMode"
+        [enableOnOffLabels]="true"
+        (ionChange)="accessibilityModeChanged()"
+      >
+      </ion-toggle>
+    </ion-item> -->
+    <ion-item class="light" id="icon-select">
+      <ion-label>User Icon</ion-label>
+      <ion-select
+        value="{{this.userIconMode}}"
+        (ionChange)="userIconChanged($event)"
+      >
         <ion-select-option value="triangle">
           <ion-label> Arrow </ion-label>
         </ion-select-option>

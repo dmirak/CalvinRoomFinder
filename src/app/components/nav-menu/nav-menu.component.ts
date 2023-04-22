@@ -1,6 +1,7 @@
 import { Component, Input, OnDestroy } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { ModalController } from '@ionic/angular';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-nav-menu-component',
@@ -16,14 +17,21 @@ export class NavMenuComponent implements OnDestroy {
   duration: string;
   destination: string;
   floor: string;
+  darkMode: boolean;
   private distanceSubscription: Subscription;
   private durationSubscription: Subscription;
   private destinationSubscription: Subscription;
   private floorSubscription: Subscription;
 
-  constructor(private modalCtrl: ModalController) {}
+  constructor(
+    private modalCtrl: ModalController,
+    private storageService: StorageService
+  ) {}
 
   ngOnInit() {
+    this.storageService.get('darkMode').then((val) => {
+      this.darkMode = val;
+    });
     this.distanceSubscription = this.distanceSubject.subscribe((distance) => {
       this.distance = distance;
     });
